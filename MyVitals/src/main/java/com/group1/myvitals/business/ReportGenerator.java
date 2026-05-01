@@ -1,6 +1,6 @@
 package com.group1.myvitals.business;
 
-import io.github.fatihcatalkaya.javatypst.JavaTypst;
+/* import io.github.fatihcatalkaya.javatypst.JavaTypst;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -183,3 +183,4 @@ public class ReportGenerator {
         }
     }
 }
+ */
