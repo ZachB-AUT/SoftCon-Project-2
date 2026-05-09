@@ -1,4 +1,4 @@
-package com.group1.myvitals.business;
+package com.group1.myvitals.util;
 
 /* import io.github.fatihcatalkaya.javatypst.JavaTypst;
 import java.io.File;

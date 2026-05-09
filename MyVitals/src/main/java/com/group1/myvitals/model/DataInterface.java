@@ -1,10 +1,8 @@
-package com.group1.myvitals.business;
+package com.group1.myvitals.model;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
-
-import com.group1.myvitals.model.DataType;
 
 /**
  * This class handles storing, reading, writing, and editing data.
