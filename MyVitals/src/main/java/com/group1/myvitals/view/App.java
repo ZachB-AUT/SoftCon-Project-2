@@ -1,4 +1,4 @@
-package com.group1.myvitals.app;
+package com.group1.myvitals.view;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
