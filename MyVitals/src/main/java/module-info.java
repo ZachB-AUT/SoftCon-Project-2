@@ -12,7 +12,7 @@ module com.group1.myvitals {
  
     // Opens packages so JavaFX can access controllers via reflection
     opens com.group1.myvitals.view        to javafx.fxml;
-    opens com.group1.myvitals.controller to javafx.fxml;
+    //opens com.group1.myvitals.controller to javafx.fxml; TO DO Uncomment once controller files have been written
  
     // Export the app package so JavaFX launcher can find App.java
     exports com.group1.myvitals.view;
