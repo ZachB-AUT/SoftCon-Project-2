@@ -12,7 +12,7 @@
          <children>
             <Text fill="#575279" strokeType="OUTSIDE" strokeWidth="0.0" text="Record Data" wrappingWidth="641.8359527587891">
                <font>
-                  <Font name="Aptos Display Bold" size="64.0" />
+                  <Font name="Aptos Display Bold" size="48.0" />
                </font>
                <VBox.margin>
                   <Insets left="15.0" />

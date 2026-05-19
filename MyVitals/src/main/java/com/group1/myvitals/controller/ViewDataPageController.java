@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.StackedBarChart;
 
-public class ViewDataController {
+public class ViewDataPageController {
     @FXML private StackedBarChart ViewDataBloodPressureGraph;
     @FXML private LineChart ViewDataHeartRateGraph;
     @FXML private LineChart ViewDataSleepDurationGraph;

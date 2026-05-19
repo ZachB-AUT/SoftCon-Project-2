@@ -19,7 +19,7 @@
          <children>
             <VBox alignment="CENTER_LEFT" layoutY="229.0" prefHeight="244.0" prefWidth="225.0" spacing="15.0" style="-fx-background-color: #575279;">
                <children>
-                  <Button graphicTextGap="7.0" mnemonicParsing="false" onAction="#ShowHomePage" prefHeight="35.0" prefWidth="94.0" style="-fx-background-color: transparent;" text="Home" textFill="#faf4ed">
+                  <Button graphicTextGap="7.0" mnemonicParsing="false" onAction="#showHomePage" prefHeight="35.0" prefWidth="94.0" style="-fx-background-color: transparent;" text="Home" textFill="#faf4ed">
                      <font>
                         <Font name="Aptos Mono" size="18.0" />
                      </font>
@@ -31,7 +31,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button graphicTextGap="7.0" mnemonicParsing="false" onAction="#ShowRecordDataPage" prefHeight="35.0" prefWidth="170.0" style="-fx-background-color: transparent;" text="Record Data" textFill="#faf4ed">
+                  <Button graphicTextGap="7.0" mnemonicParsing="false" onAction="#showRecordDataPage" prefHeight="35.0" prefWidth="170.0" style="-fx-background-color: transparent;" text="Record Data" textFill="#faf4ed">
                      <font>
                         <Font name="Aptos Mono" size="18.0" />
                      </font>
@@ -43,7 +43,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button graphicTextGap="7.0" mnemonicParsing="false" onAction="#ShowViewDataPage" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: transparent;" text="View Data" textFill="#faf4ed">
+                  <Button graphicTextGap="7.0" mnemonicParsing="false" onAction="#showViewDataPage" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: transparent;" text="View Data" textFill="#faf4ed">
                      <font>
                         <Font name="Aptos Mono" size="18.0" />
                      </font>
@@ -55,7 +55,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button graphicTextGap="7.0" mnemonicParsing="false" onAction="#ShowCreateReportPage" prefHeight="35.0" prefWidth="192.0" style="-fx-background-color: transparent;" text="Create Report" textFill="#faf4ed">
+                  <Button graphicTextGap="7.0" mnemonicParsing="false" onAction="#showCreateReportPage" prefHeight="35.0" prefWidth="192.0" style="-fx-background-color: transparent;" text="Create Report" textFill="#faf4ed">
                      <font>
                         <Font name="Aptos Mono" size="18.0" />
                      </font>
@@ -67,7 +67,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button graphicTextGap="7.0" mnemonicParsing="false" onAction="#ShowPersonDetailsPage" prefHeight="35.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="Personal Details" textFill="#faf4ed">
+                  <Button graphicTextGap="7.0" mnemonicParsing="false" onAction="#showPersonDetailsPage" prefHeight="35.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="Personal Details" textFill="#faf4ed">
                      <font>
                         <Font name="Aptos Mono" size="18.0" />
                      </font>
@@ -79,7 +79,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button graphicTextGap="7.0" mnemonicParsing="false" onAction="#ShowSettingsPage" prefHeight="35.0" prefWidth="137.0" style="-fx-background-color: transparent;" text="Settings" textFill="#faf4ed">
+                  <Button graphicTextGap="7.0" mnemonicParsing="false" onAction="#showSettingsPage" prefHeight="35.0" prefWidth="137.0" style="-fx-background-color: transparent;" text="Settings" textFill="#faf4ed">
                      <font>
                         <Font name="Aptos Mono" size="18.0" />
                      </font>
@@ -91,7 +91,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button graphicTextGap="7.0" mnemonicParsing="false" onAction="#Logout" prefHeight="35.0" prefWidth="118.0" style="-fx-background-color: transparent;" text="Logout" textFill="#faf4ed">
+                  <Button graphicTextGap="7.0" mnemonicParsing="false" onAction="#logout" prefHeight="35.0" prefWidth="118.0" style="-fx-background-color: transparent;" text="Logout" textFill="#faf4ed">
                      <font>
                         <Font name="Aptos Mono" size="18.0" />
                      </font>

@@ -50,7 +50,7 @@ public class MainMenuController {
     }
 
     @FXML
-    public void Logout() {
+    public void logout() {
         
     }
 
