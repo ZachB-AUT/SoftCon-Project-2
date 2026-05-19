@@ -12,7 +12,7 @@
 
 <AnchorPane prefHeight="245.0" prefWidth="360.0" style="-fx-background-radius: 10; -fx-background-color: &quot;#faf4ed&quot;;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group1.myvitals.controller.PersonController">
    <children>
-      <Text fill="#575279" layoutX="15.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Medication" wrappingWidth="240.2359619140625" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
+      <Text fill="#575279" layoutX="15.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Medication" wrappingWidth="240.2359619140625" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
          <font>
             <Font name="Aptos Display Bold" size="34.0" />
          </font>
@@ -68,7 +68,7 @@
             </Button>
          </children>
       </GridPane>
-      <Button fx:id="AddMeddicationExitButton" alignment="CENTER" cancelButton="true" contentDisplay="CENTER" layoutX="326.0" layoutY="5.0" mnemonicParsing="false" style="-fx-background-color: &quot;#ebbcba&quot;;" text="X" textAlignment="CENTER" textFill="#575279" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+      <Button fx:id="EditMeddicationExitButton" alignment="CENTER" cancelButton="true" contentDisplay="CENTER" layoutX="326.0" layoutY="5.0" mnemonicParsing="false" style="-fx-background-color: &quot;#ebbcba&quot;;" text="X" textAlignment="CENTER" textFill="#575279" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
          <font>
             <Font name="Aptos Mono" size="14.0" />
          </font>

@@ -12,7 +12,7 @@
 
 <AnchorPane prefHeight="285.0" prefWidth="310.0" style="-fx-background-radius: 10; -fx-background-color: rgba(240, 233, 224, 0.5);" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group1.myvitals.controller.LoginController">
    <children>
-      <Text fill="#575279" layoutX="15.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign In" wrappingWidth="240.2359619140625">
+      <Text fill="#575279" layoutX="15.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" wrappingWidth="240.2359619140625">
          <font>
             <Font name="Aptos Display Bold" size="34.0" />
          </font>
@@ -45,7 +45,7 @@
                   <Font name="Aptos Mono" size="16.0" />
                </font>
             </TextField>
-            <Button fx:id="LoginSignInButton" alignment="CENTER" mnemonicParsing="false" prefHeight="33.0" prefWidth="314.0" style="-fx-text-fill: &quot;#FFFFFF&quot;; -fx-background-color: &quot;#d7827a&quot;;" text="Sign In" textFill="#575279" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+            <Button fx:id="LoginSignInButton" alignment="CENTER" mnemonicParsing="false" onAction="#handleSignIn" prefHeight="33.0" prefWidth="314.0" style="-fx-text-fill: &quot;#FFFFFF&quot;; -fx-background-color: &quot;#d7827a&quot;;" text="Sign In" textFill="#575279" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
                <font>
                   <Font name="Aptos Mono Bold" size="16.0" />
                </font>
@@ -62,7 +62,7 @@
             <Font name="Aptos Mono" size="14.0" />
          </font>
       </Text>
-      <Button fx:id="LoginSignUpButton" alignment="CENTER_RIGHT" layoutX="162.0" layoutY="238.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="121.0" style="-fx-background-color: transparent; -fx-text-fill: &quot;#575279&quot;;" text="Sign up here" textAlignment="RIGHT" textFill="#575279">
+      <Button fx:id="LoginSignUpButton" alignment="CENTER_RIGHT" layoutX="162.0" layoutY="238.0" mnemonicParsing="false" onAction="#handleGoToSignupPage" prefHeight="27.0" prefWidth="121.0" style="-fx-background-color: transparent; -fx-text-fill: &quot;#575279&quot;;" text="Sign up here" textAlignment="RIGHT" textFill="#575279">
          <font>
             <Font name="Aptos Mono Italic" size="14.0" />
          </font>

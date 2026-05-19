@@ -13,7 +13,7 @@ public class App extends Application {
     public void start(Stage stage) {
         SceneManager.initialise(stage);
         stage.setTitle("MyVitals Health Data Manager");
-        stage.setWidth(1000);
+        stage.setWidth(900);
         stage.setHeight(700);
         //SceneManager.getInstance().showLogin();
         stage.show();
