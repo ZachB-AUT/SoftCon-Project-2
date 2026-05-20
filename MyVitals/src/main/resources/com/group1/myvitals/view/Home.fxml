@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.StackedBarChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="675.0" style="-fx-background-color: #faf4ed;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group1.myvitals.controller.HomePageController">
+   <children>
+      <VBox layoutX="15.0" layoutY="15.0" prefHeight="570.0" prefWidth="630.0" spacing="30.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
+         <children>
+            <Text fill="#575279" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to MyVitals! " wrappingWidth="611.4359283447266">
+               <font>
+                  <Font name="Aptos Display Bold" size="48.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="15.0" />
+               </VBox.margin>
+            </Text>
+            <HBox prefHeight="23.0" prefWidth="746.0">
+               <children>
+                  <Text fill="#575279" strokeType="OUTSIDE" strokeWidth="0.0" text="Today is" wrappingWidth="92.41588592529297">
+                     <font>
+                        <Font name="Aptos Mono Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Label fx:id="HomePageTodaysDate" alignment="CENTER" contentDisplay="CENTER" prefHeight="22.0" text="16/05/2026" textFill="#575279">
+                     <font>
+                        <Font name="Aptos Mono Bold Italic" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="1.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Text fill="#575279" strokeType="OUTSIDE" strokeWidth="0.0" text=", you have recorded">
+                     <font>
+                        <Font name="Aptos Mono Bold" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="1.0" right="2.0" />
+                     </HBox.margin>
+                  </Text>
+                  <Label fx:id="HomePageNumberOfDataPointsRecorded" prefHeight="18.0" text="0" textFill="#575279">
+                     <font>
+                        <Font name="Aptos Mono Bold Italic" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="3.0" right="2.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Text fill="#575279" strokeType="OUTSIDE" strokeWidth="0.0" text="data points today">
+                     <font>
+                        <Font name="Aptos Mono Bold" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="3.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
+            </HBox>
+            <StackedBarChart fx:id="HomePageDataPointsInLastMonthGraph" prefHeight="219.0" prefWidth="630.0" style="-fx-background-color: #faf4ed;" title="Data points recorded in the past month">
+              <xAxis>
+                <CategoryAxis prefWidth="690.0" side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </StackedBarChart>
+            <VBox prefHeight="140.0" prefWidth="645.0" spacing="15.0">
+               <children>
+                  <Text fill="#575279" strokeType="OUTSIDE" strokeWidth="0.0" text="Key links:">
+                     <font>
+                        <Font name="Aptos Mono Bold" size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="15.0" />
+                     </VBox.margin>
+                  </Text>
+                  <GridPane hgap="10.0" prefWidth="545.0" vgap="15.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Button fx:id="HomePageRecordDataButton" graphicTextGap="7.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #d7827a;" text="Record Data" textFill="#faf4ed" GridPane.columnSpan="2">
+                           <font>
+                              <Font name="Aptos Mono" size="16.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="150.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/data_cream_icon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="HomePageViewDataButton" graphicTextGap="7.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #d7827a;" text="View Data" textFill="#faf4ed" GridPane.columnIndex="2" GridPane.columnSpan="2">
+                           <font>
+                              <Font name="Aptos Mono" size="16.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/graph_cream_icon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="HomePagePersonDetailsButton" graphicTextGap="7.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #d7827a;" text="Personal Details" textFill="#faf4ed" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Aptos Mono" size="16.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/person_cream_icon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="HomePageSettingsButton" graphicTextGap="7.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #d7827a;" text="Settings" textFill="#faf4ed" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Aptos Mono" size="16.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="23.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/settings_cream_icon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="HomePageLogoutButton" graphicTextGap="7.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #d7827a;" text="Logout" textFill="#faf4ed" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Aptos Mono" size="16.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="23.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/logout_cream_icon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="HomePageCreateReportButton" graphicTextGap="7.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #d7827a;" text="Create Report" textFill="#faf4ed" GridPane.columnIndex="4" GridPane.columnSpan="2">
+                           <font>
+                              <Font name="Aptos Mono" size="16.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/report_icon_cream.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="15.0" />
+                     </VBox.margin>
+                  </GridPane>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

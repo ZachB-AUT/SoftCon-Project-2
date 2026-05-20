@@ -9,14 +9,20 @@ import java.io.IOException;
 public class SceneManager {
 
     private static SceneManager instance;
-    private Stage stage;
+    private Stage primaryStage;
+    private BorderPane mainMenu; 
+    
+    private SceneManager() {}
 
-    private SceneManager(Stage stage) {
-        this.stage = stage;
+    public static SceneManager getInstance(){
+        if (instance == null){
+            instance = new SceneManager();
+        }
+        return instance;
     }
 
-    public static void initialise(Stage stage) {
-        instance = new SceneManager(stage);
+    public void initialise(Stage stage) {
+        this.primaryStage = stage;
     }
 
     public static SceneManager getInstance() {
