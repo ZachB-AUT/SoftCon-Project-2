@@ -6,18 +6,14 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="mainMenuBorderPane" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group1.myvitals.controller.MainMenuController">
-   <center>
-      <TilePane prefHeight="600.0" prefWidth="675.0" style="-fx-background-color: #faf4ed;" BorderPane.alignment="CENTER" />
-   </center>
+<BorderPane fx:id="mainMenuBorderPane" prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: #faf4ed;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group1.myvitals.controller.MainMenuController">
    <left>
-      <Pane prefHeight="600.0" prefWidth="225.0" style="-fx-background-color: #575279;" BorderPane.alignment="CENTER">
+      <Pane prefHeight="700.0" prefWidth="250.0" style="-fx-background-color: #575279;" BorderPane.alignment="CENTER">
          <children>
-            <VBox alignment="CENTER_LEFT" layoutY="229.0" prefHeight="244.0" prefWidth="225.0" spacing="15.0" style="-fx-background-color: #575279;">
+            <VBox alignment="CENTER_LEFT" layoutX="3.0" layoutY="241.0" prefHeight="348.0" prefWidth="240.0" spacing="15.0">
                <children>
                   <Button graphicTextGap="7.0" mnemonicParsing="false" onAction="#showHomePage" prefHeight="35.0" prefWidth="94.0" style="-fx-background-color: transparent;" text="Home" textFill="#faf4ed">
                      <font>
@@ -108,7 +104,7 @@
                   <Insets left="5.0" top="10.0" />
                </padding>
             </VBox>
-            <ImageView fitHeight="227.0" fitWidth="190.0" layoutX="22.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="227.0" fitWidth="190.0" layoutX="35.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/MyVitals_logo_transparent_coloured.png" />
                </image>

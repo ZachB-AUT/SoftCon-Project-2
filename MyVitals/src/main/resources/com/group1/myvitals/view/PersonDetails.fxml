@@ -14,9 +14,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="675.0" style="-fx-background-color: #faf4ed;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group1.myvitals.controller.PersonDetailsPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="850.0" style="-fx-background-color: #faf4ed;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group1.myvitals.controller.PersonDetailsPageController">
    <children>
-      <VBox layoutX="15.0" layoutY="15.0" prefHeight="570.0" prefWidth="645.0" spacing="20.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
+      <VBox layoutX="15.0" layoutY="15.0" prefHeight="670.0" prefWidth="820.0" spacing="20.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
          <children>
             <Text fill="#575279" strokeType="OUTSIDE" strokeWidth="0.0" text="Personal Details" wrappingWidth="641.8359527587891">
                <font>
@@ -26,12 +26,12 @@
                   <Insets left="15.0" />
                </VBox.margin>
             </Text>
-            <VBox prefHeight="450.0" prefWidth="627.0" spacing="30.0">
+            <VBox prefHeight="570.0" prefWidth="630.0" spacing="30.0">
                <VBox.margin>
                   <Insets left="15.0" right="15.0" />
                </VBox.margin>
                <children>
-                  <HBox prefHeight="100.0" spacing="135.0">
+                  <HBox prefHeight="100.0" spacing="200.0">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
@@ -90,7 +90,7 @@
                         </VBox>
                      </children>
                   </HBox>
-                  <HBox prefHeight="100.0" spacing="135.0">
+                  <HBox prefHeight="100.0" spacing="200.0">
                      <children>
                         <VBox>
                            <children>
@@ -146,7 +146,7 @@
                         </VBox>
                      </children>
                   </HBox>
-                  <HBox prefHeight="100.0" spacing="50.0">
+                  <HBox prefHeight="100.0" spacing="85.0">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
@@ -231,7 +231,7 @@
                         </VBox>
                      </children>
                   </HBox>
-                  <HBox prefHeight="250.0" prefWidth="627.0" spacing="80.0">
+                  <HBox prefHeight="230.0" prefWidth="630.0" spacing="120.0">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
@@ -294,9 +294,9 @@
                               </Text>
                               <VBox prefHeight="200.0" spacing="20.0">
                                  <children>
-                                    <TableView fx:id="PersonalDetailsAllergiesTable" prefHeight="300.0" prefWidth="210.0">
+                                    <TableView fx:id="PersonalDetailsAllergiesTable" prefHeight="300.0" prefWidth="320.0">
                                        <columns>
-                                          <TableColumn editable="false" prefWidth="210.0" sortable="false" text="Name" />
+                                          <TableColumn editable="false" prefWidth="320.0" sortable="false" text="Name" />
                                        </columns>
                                     </TableView>
                                     <GridPane hgap="10.0">
