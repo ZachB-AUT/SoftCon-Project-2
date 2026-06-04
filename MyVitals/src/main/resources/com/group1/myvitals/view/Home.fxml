@@ -79,7 +79,7 @@
                   <Insets left="15.0" />
                </padding>
             </HBox>
-            <StackedBarChart fx:id="HomePageDataPointsInLastMonthGraph" prefHeight="360.0" prefWidth="630.0" style="-fx-background-color: #faf4ed;" stylesheets="@../css/stackedBarChartStyle.css" title="Data Points Recorded (Past 30 days)">
+            <StackedBarChart fx:id="HomePageDataPointsInLastMonthGraph" prefHeight="360.0" prefWidth="630.0" style="-fx-background-color: #faf4ed;" stylesheets="@../css/graphStyle.css" title="Data Points Recorded (Past 30 days)">
               <xAxis>
                   <CategoryAxis label="Date" side="BOTTOM" tickLabelRotation="45.0" />
                </xAxis>

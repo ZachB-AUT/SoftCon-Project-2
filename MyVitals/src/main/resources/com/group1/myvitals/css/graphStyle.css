@@ -1,3 +1,5 @@
+/********************** GENERAL CHART STYLING **********************/
+
 .chart-plot-background {
     -fx-background-color: transparent;
 }
@@ -14,7 +16,7 @@
     -fx-background-insets: 0;
 }
 
-/* LEGEND */
+/* LEGEND STYLE */
 
 .chart-legend {
    -fx-background-color: transparent;
@@ -24,29 +26,6 @@
     -fx-text-fill: #000000;
     -fx-font-family: "Aptos Mono";
     -fx-font-size: 12px;
-}
-
-/* DATA SERIES */
-
-.default-color0.chart-bar {
-    -fx-bar-fill: #575279; 
-}
-.default-color0.chart-legend-item-symbol {
-    -fx-background-color: #575279;
-}
-
-.default-color1.chart-bar {
-    -fx-bar-fill: #d7827a; 
-}
-.default-color1.chart-legend-item-symbol {
-    -fx-background-color:  #d7827a;
-}
-
-.default-color2.chart-bar {
-    -fx-bar-fill: #a8cdd8; 
-}
-.default-color2.chart-legend-item-symbol {
-    -fx-background-color:  #a8cdd8;
 }
 
 /* AXIS STYLE */
@@ -69,3 +48,28 @@
     -fx-font-size: 18px;     
     -fx-padding: 0 0 10px 0;  
 }
+
+/* DATA SERIES COLOURS */
+
+.default-color0.chart-bar {
+    -fx-bar-fill: #575279; 
+}
+.default-color0.chart-legend-item-symbol {
+    -fx-background-color: #575279;
+}
+
+.default-color1.chart-bar {
+    -fx-bar-fill: #d7827a; 
+}
+.default-color1.chart-legend-item-symbol {
+    -fx-background-color:  #d7827a;
+}
+
+.default-color2.chart-bar {
+    -fx-bar-fill: #a8cdd8; 
+}
+.default-color2.chart-legend-item-symbol {
+    -fx-background-color:  #a8cdd8;
+}
+
+/********************** STYLING FOR SPECIFIC CHARTS **********************/

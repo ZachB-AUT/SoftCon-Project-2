@@ -15,14 +15,23 @@
    <children>
       <VBox layoutX="15.0" layoutY="15.0" prefHeight="670.0" prefWidth="820.0" spacing="25.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
          <children>
-            <Text fill="#575279" strokeType="OUTSIDE" strokeWidth="0.0" text="View Data" wrappingWidth="541.8360137939453">
-               <font>
-                  <Font name="Aptos Display Bold" size="48.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="15.0" />
-               </VBox.margin>
-            </Text>
+            <HBox alignment="BOTTOM_LEFT" prefHeight="150.0" prefWidth="600.0">
+               <children>
+                  <Text fill="#575279" strokeType="OUTSIDE" strokeWidth="0.0" text="View Data" wrappingWidth="220.23602294921875">
+                     <font>
+                        <Font name="Aptos Display Bold" size="48.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#575279" strokeType="OUTSIDE" strokeWidth="0.0" text="(Past 7 Days)" wrappingWidth="204.82342529296875">
+                     <font>
+                        <Font name="Aptos Mono" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="10.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+            </HBox>
             <VBox prefHeight="670.0" prefWidth="746.0" spacing="30.0">
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="300.0" prefWidth="200.0" spacing="60.0">
@@ -37,13 +46,13 @@
                                     <Font name="Aptos Mono Bold" size="22.0" />
                                  </font>
                               </Text>
-                              <StackedBarChart fx:id="ViewDataBloodPressureGraph">
-                                <xAxis>
-                                  <CategoryAxis side="BOTTOM" />
-                                </xAxis>
-                                <yAxis>
-                                  <NumberAxis side="LEFT" />
-                                </yAxis>
+                              <StackedBarChart fx:id="ViewDataBloodPressureGraph" stylesheets="@../css/graphStyle.css">
+                                 <xAxis>
+                                    <CategoryAxis label="Date" side="BOTTOM" tickLabelRotation="45.0" />
+                                 </xAxis>
+                                 <yAxis>
+                                    <NumberAxis label="BP Reading (mmHg)" side="LEFT" />
+                                 </yAxis>
                               </StackedBarChart>
                            </children>
                         </VBox>
@@ -57,13 +66,13 @@
                                     <Insets />
                                  </VBox.margin>
                               </Text>
-                              <LineChart fx:id="ViewDataHeartRateGraph">
+                              <LineChart fx:id="ViewDataHeartRateGraph" stylesheets="@../css/graphStyle.css">
                                 <xAxis>
-                                  <CategoryAxis side="BOTTOM" />
+                                   <CategoryAxis label="Date" side="BOTTOM" tickLabelRotation="45.0" />
                                 </xAxis>
                                 <yAxis>
-                                  <NumberAxis side="LEFT" />
-                                </yAxis>
+                                    <NumberAxis label="Heart Rate (BPM)" side="LEFT" />
+                                 </yAxis>
                               </LineChart>
                            </children>
                         </VBox>
@@ -78,13 +87,13 @@
                                     <Font name="Aptos Mono Bold" size="22.0" />
                                  </font>
                               </Text>
-                              <LineChart fx:id="ViewDataSleepDurationGraph">
+                              <LineChart fx:id="ViewDataSleepDurationGraph" stylesheets="@../css/graphStyle.css">
                                 <xAxis>
-                                  <CategoryAxis side="BOTTOM" />
+                                    <CategoryAxis label="Date" side="BOTTOM" tickLabelRotation="45.0" />
                                 </xAxis>
                                 <yAxis>
-                                  <NumberAxis side="LEFT" />
-                                </yAxis>
+                                    <NumberAxis label="Duration (Hours)" side="LEFT" />
+                                 </yAxis>
                               </LineChart>
                            </children>
                         </VBox>
@@ -95,12 +104,12 @@
                                     <Font name="Aptos Mono Bold" size="22.0" />
                                  </font>
                               </Text>
-                              <LineChart fx:id="ViewDataSleepDurationGraph2">
+                              <LineChart fx:id="ViewDataSleepDurationGraph2" stylesheets="@../css/graphStyle.css">
                                  <xAxis>
-                                    <CategoryAxis side="BOTTOM" />
-                                 </xAxis>
-                                 <yAxis>
-                                    <NumberAxis side="LEFT" />
+                                    <CategoryAxis label="Date" side="BOTTOM" tickLabelRotation="45.0" />
+                                </xAxis>
+                                <yAxis>
+                                    <NumberAxis label="Duration (Hours)" side="LEFT" />
                                  </yAxis>
                               </LineChart>
                            </children>

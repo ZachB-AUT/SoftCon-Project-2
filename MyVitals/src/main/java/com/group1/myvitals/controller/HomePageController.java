@@ -25,7 +25,6 @@ public class HomePageController {
     private LocalDate today;
     private DateTimeFormatter dateFormatter;
 
-
     @FXML
     public void initialize() {
         // Display todays date
