@@ -1,0 +1,173 @@
+/********************** GENERAL CHART STYLING **********************/
+
+.chart-plot-background {
+    -fx-background-color: transparent;
+}
+
+.chart-vertical-grid-lines {
+    -fx-stroke: transparent;
+}
+.chart-horizontal-grid-lines {
+    -fx-stroke: #cecacd; 
+    -fx-stroke-dash-array: 2px, 2px;
+}
+
+.chart-bar {
+    -fx-background-insets: 0;
+}
+
+/* LEGEND STYLE */
+.chart-legend {
+   -fx-background-color: transparent;
+}
+
+.chart-legend-item {
+    -fx-text-fill: #575279; 
+    -fx-font-family: "Aptos Mono";
+    -fx-font-size: 12px;
+}
+
+/* AXIS STYLE */
+.axis .axis-label {
+    -fx-text-fill: #575279;         
+    -fx-font-family: "Aptos Mono"; 
+    -fx-font-size: 12px;             
+}
+
+.axis .tick-label {
+    -fx-text-fill: #575279;      
+    -fx-font-family: "Aptos Mono";  
+    -fx-font-size: 10px;       
+}
+
+/* MAIN TITLE STYLE */
+.chart-title {
+    -fx-text-fill: #575279;  
+    -fx-font-family: "Aptos Mono"; 
+    -fx-font-size: 18px;     
+    -fx-padding: 0 0 10px 0;  
+}
+
+/********************** GLOBAL DATA SERIES COLOURS **********************/
+
+.default-color0.chart-bar { -fx-bar-fill: #575279; }
+.default-color0.chart-legend-item-symbol { -fx-background-color: #575279; }
+
+.default-color1.chart-bar { -fx-bar-fill: #d7827a; }
+.default-color1.chart-legend-item-symbol { -fx-background-color:  #d7827a; }
+
+.default-color2.chart-bar { -fx-bar-fill: #a8cdd8; }
+.default-color2.chart-legend-item-symbol { -fx-background-color:  #a8cdd8; }
+
+.default-color3.chart-bar { -fx-bar-fill: #dec28d; }
+.default-color3.chart-legend-item-symbol { -fx-background-color: #dec28d; }
+
+/********************** STYLING FOR SPECIFIC CHARTS **********************/
+
+/* HOME PAGE GRAPH */
+#HomePageDataPointsInLastMonthGraph .chart-title {
+    -fx-font-size: 20px; 
+}
+
+#HomePageDataPointsInLastMonthGraph .default-color0.chart-series-line {
+    -fx-stroke: #9893a5;
+    -fx-stroke-width: 3px;
+}
+#HomePageDataPointsInLastMonthGraph .default-color0.chart-line-symbol {
+    -fx-background-color: #575279, #9893a5; 
+    -fx-background-insets: 0, 2px;
+}
+#HomePageDataPointsInLastMonthGraph .default-color0.chart-legend-item-symbol {
+    -fx-background-color: #575279;
+}
+
+#HomePageDataPointsInLastMonthGraph .default-color1.chart-series-line {
+    -fx-stroke: #ebbcba;
+    -fx-stroke-width: 3px;
+}
+#HomePageDataPointsInLastMonthGraph .default-color1.chart-line-symbol {
+    -fx-background-color: #d7827a, #ebbcba; 
+    -fx-background-insets: 0, 2px;
+}
+#HomePageDataPointsInLastMonthGraph .default-color1.chart-legend-item-symbol {
+    -fx-background-color: #d7827a;
+}
+
+#HomePageDataPointsInLastMonthGraph .default-color2.chart-series-line {
+    -fx-stroke: #a8cdd8;
+    -fx-stroke-width: 3px;
+}
+#HomePageDataPointsInLastMonthGraph .default-color2.chart-line-symbol {
+    -fx-background-color: #31748f, #a8cdd8; 
+    -fx-background-insets: 0, 2px;
+}
+#HomePageDataPointsInLastMonthGraph .default-color2.chart-legend-item-symbol {
+    -fx-background-color: #31748f;
+}
+
+#HomePageDataPointsInLastMonthGraph .default-color3.chart-series-line {
+    -fx-stroke: #dec28d;
+    -fx-stroke-width: 3px;
+}
+#HomePageDataPointsInLastMonthGraph .default-color3.chart-line-symbol {
+    -fx-background-color: #ea9d34, #dec28d; 
+    -fx-background-insets: 0, 2px;
+}
+#HomePageDataPointsInLastMonthGraph .default-color3.chart-legend-item-symbol {
+    -fx-background-color: #ea9d34;
+
+}
+
+/* VIEW DATA PAGE BLOOD PRESSURE GRAPH */
+
+#ViewDataBloodPressureGraph .default-color0.chart-bar {
+    -fx-bar-fill: #d7827a; 
+}
+#ViewDataBloodPressureGraph .default-color0.chart-legend-item-symbol {
+    -fx-background-color:  #d7827a;
+}
+#ViewDataBloodPressureGraph .default-color1.chart-bar {
+    -fx-bar-fill: #a8cdd8; 
+}
+#ViewDataBloodPressureGraph .default-color1.chart-legend-item-symbol {
+    -fx-background-color:  #a8cdd8;
+}
+
+/* VIEW DATA PAGE HEART RATE GRAPH */
+#ViewDataHeartRateGraph .default-color0.chart-series-line {
+    -fx-stroke: #9893a5;
+    -fx-stroke-width: 3px;
+}
+#ViewDataHeartRateGraph .default-color0.chart-line-symbol {
+    -fx-background-color: #575279, #9893a5; 
+    -fx-background-insets: 0, 2px;
+}
+#ViewDataHeartRateGraph .default-color0.chart-legend-item-symbol {
+    -fx-background-color: #575279;
+}
+
+/* VIEW DATA PAGE SLEEP DURATION GRAPH */
+#ViewDataSleepDurationGraph .default-color0.chart-series-line {
+    -fx-stroke: #a8cdd8;
+    -fx-stroke-width: 3px;
+}
+#ViewDataSleepDurationGraph .default-color0.chart-line-symbol {
+    -fx-background-color: #31748f, #a8cdd8; 
+    -fx-background-insets: 0, 2px; 
+}
+#ViewDataSleepDurationGraph .default-color0.chart-legend-item-symbol {
+    -fx-background-color: #31748f;
+}
+
+/* VIEW DATA PAGE RESP RATE GRAPH */
+#ViewDataRespRateGraph .default-color0.chart-series-line {
+    -fx-stroke: #ebbcba;
+    -fx-stroke-width: 3px;
+}
+#ViewDataRespRateGraph .default-color0.chart-line-symbol {
+    -fx-background-color: #d7827a, #ebbcba; 
+    -fx-background-insets: 0, 2px;
+}
+#ViewDataRespRateGraph .default-color0.chart-legend-item-symbol {
+    -fx-background-color: #d7827a;
+}
