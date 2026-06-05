@@ -1,8 +1,6 @@
 package com.group1.myvitals.controller;
  
 import com.group1.myvitals.view.SceneManager;
-
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;

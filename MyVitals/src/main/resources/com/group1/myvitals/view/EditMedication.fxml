@@ -45,13 +45,13 @@
                   <Font name="Aptos Mono Bold" size="16.0" />
                </font>
             </Text>
-            <ComboBox fx:id="MedicationFreqDropDown" prefWidth="150.0" style="-fx-border-color: &quot;#a8cdd8&quot;; -fx-background-color: &quot;#FFFFFF&quot;;" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
-            <TextField fx:id="MedicationDosageTextBox" prefHeight="33.0" prefWidth="112.0" style="-fx-border-color: &quot;#a8cdd8&quot;;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <ComboBox fx:id="MedicationFreqDropDown" prefWidth="150.0" style="-fx-border-color: &quot;#a8cdd8&quot;; -fx-background-color: &quot;#FFFFFF&quot;;" styleClass="frequency-combo-box" stylesheets="@../css/chartStyle.css" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+            <TextField fx:id="MedicationDosageTextBox" prefHeight="33.0" prefWidth="112.0" style="-fx-border-color: &quot;#a8cdd8&quot;;" stylesheets="@../css/chartStyle.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font name="Aptos Mono" size="16.0" />
                </font>
             </TextField>
-            <TextField fx:id="MedicationNameTextBox" maxHeight="20.0" style="-fx-border-color: &quot;#a8cdd8&quot;;" GridPane.columnIndex="1" GridPane.columnSpan="2">
+            <TextField fx:id="MedicationNameTextBox" maxHeight="20.0" style="-fx-border-color: &quot;#a8cdd8&quot;;" stylesheets="@../css/chartStyle.css" GridPane.columnIndex="1" GridPane.columnSpan="2">
                <font>
                   <Font name="Aptos Mono" size="16.0" />
                </font>
@@ -61,14 +61,14 @@
                   <Font name="Aptos Mono" size="16.0" />
                </font>
             </Text>
-            <Button fx:id="MedicationAddButton" alignment="CENTER" mnemonicParsing="false" style="-fx-text-fill: &quot;#FFFFFF&quot;; -fx-background-color: &quot;#d7827a&quot;;" text="Add" textFill="#575279" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+            <Button fx:id="MedicationAddButton" alignment="CENTER" mnemonicParsing="false" style="-fx-text-fill: &quot;#FFFFFF&quot;; -fx-background-color: &quot;#d7827a&quot;;" stylesheets="@../css/chartStyle.css" text="Add" textFill="#575279" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
                <font>
                   <Font name="Aptos Mono Bold" size="16.0" />
                </font>
             </Button>
          </children>
       </GridPane>
-      <Button fx:id="EditMeddicationExitButton" alignment="CENTER" cancelButton="true" contentDisplay="CENTER" layoutX="326.0" layoutY="5.0" mnemonicParsing="false" style="-fx-background-color: &quot;#ebbcba&quot;;" text="X" textAlignment="CENTER" textFill="#575279" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+      <Button fx:id="EditMeddicationExitButton" alignment="CENTER" cancelButton="true" contentDisplay="CENTER" layoutX="326.0" layoutY="5.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: &quot;#ebbcba&quot;;" styleClass="exit-button" stylesheets="@../css/chartStyle.css" text="X" textAlignment="CENTER" textFill="#575279" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
          <font>
             <Font name="Aptos Mono" size="14.0" />
          </font>

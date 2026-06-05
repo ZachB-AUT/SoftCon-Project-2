@@ -8,14 +8,14 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="850.0" style="-fx-background-color: #faf4ed;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group1.myvitals.controller.SettingsPageController">
    <children>
-      <VBox layoutX="15.0" layoutY="15.0" prefHeight="570.0" prefWidth="645.0" spacing="30.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
+      <VBox layoutX="15.0" layoutY="15.0" spacing="30.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="15.0">
          <children>
             <Text fill="#575279" strokeType="OUTSIDE" strokeWidth="0.0" text="Settings" wrappingWidth="641.8359527587891">
                <font>
                   <Font name="Aptos Display Bold" size="48.0" />
                </font>
                <VBox.margin>
-                  <Insets left="15.0" />
+                  <Insets />
                </VBox.margin>
             </Text>
          </children>

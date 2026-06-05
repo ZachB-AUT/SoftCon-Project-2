@@ -1,13 +1,11 @@
 package com.group1.myvitals.controller;
- 
-import java.time.LocalDate;
 
-import com.group1.myvitals.view.SceneManager;
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.StackedBarChart;
 import javafx.scene.chart.XYChart;
 import java.time.format.DateTimeFormatter;
+import java.time.LocalDate;
 
 public class ViewDataPageController {
     @FXML private StackedBarChart<String, Number> ViewDataBloodPressureGraph;

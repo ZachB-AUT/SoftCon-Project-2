@@ -1,12 +1,7 @@
 package com.group1.myvitals.controller;
 
 import com.group1.myvitals.view.SceneManager;
-import java.io.IOException;
-
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
 
 public class MainMenuController {

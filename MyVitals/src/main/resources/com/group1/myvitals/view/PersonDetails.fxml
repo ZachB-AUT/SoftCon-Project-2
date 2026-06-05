@@ -1,335 +1,147 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="850.0" style="-fx-background-color: #faf4ed;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group1.myvitals.controller.PersonDetailsPageController">
-   <children>
-      <VBox layoutX="15.0" layoutY="15.0" prefHeight="670.0" prefWidth="820.0" spacing="20.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
-         <children>
-            <Text fill="#575279" strokeType="OUTSIDE" strokeWidth="0.0" text="Personal Details" wrappingWidth="641.8359527587891">
-               <font>
-                  <Font name="Aptos Display Bold" size="48.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="15.0" />
-               </VBox.margin>
-            </Text>
-            <VBox prefHeight="570.0" prefWidth="630.0" spacing="30.0">
-               <VBox.margin>
-                  <Insets left="15.0" right="15.0" />
-               </VBox.margin>
-               <children>
-                  <HBox prefHeight="100.0" spacing="200.0">
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                     <children>
-                        <VBox>
-                           <children>
-                              <Text fill="#575279" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name:" wrappingWidth="152.8140869140625">
-                                 <font>
-                                    <Font name="Aptos Mono Bold" size="16.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets bottom="5.0" />
-                                 </VBox.margin>
-                              </Text>
-                              <HBox alignment="CENTER_LEFT" spacing="15.0">
-                                 <children>
-                                    <TextField fx:id="PersonalDetailsFirstNameTextBox" maxHeight="34.0" prefHeight="29.0" prefWidth="170.0" style="-fx-border-color: &quot;#a8cdd8&quot;;">
-                                       <font>
-                                          <Font name="Aptos Mono" size="14.0" />
-                                       </font>
-                                    </TextField>
-                                    <Button fx:id="PersonalDetailsEditFirstNameButton" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" style="-fx-text-fill: &quot;#FFFFFF&quot;; -fx-background-color: &quot;#d7827a&quot;;" text="Edit" textFill="#575279">
-                                       <font>
-                                          <Font name="Aptos Mono Bold" size="14.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                              </HBox>
-                           </children>
+<AnchorPane prefHeight="750.0" prefWidth="950.0" style="-fx-background-color: #faf4ed;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group1.myvitals.controller.PersonDetailsPageController">
+    
+    <stylesheets>
+        <URL value="@chartStyle.css" />
+    </stylesheets>
+
+    <children>
+        <VBox spacing="25.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="15.0">
+            <children>
+                
+                <AnchorPane>
+                    <children>
+                        <Label text="Personal Details" textFill="#575279" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="Aptos Display Bold" size="48.0" />
+                     </font></Label>
+                        
+                        <Button fx:id="PersonalDetailsMainEditSaveButton" onAction="#mainEditSaveButtonPressed" prefHeight="35.0" prefWidth="130.0" styleClass="button-primary" stylesheets="@../css/chartStyle.css" text="Edit Profile" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0" />
+                    </children>
+                </AnchorPane>
+
+                <VBox spacing="20.0">
+                    <children>
+                        
+                        <HBox spacing="40.0">
+                            <children>
+                                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Label style="-fx-font-family: 'Aptos Mono'; -fx-font-weight: bold; -fx-text-fill: #575279; -fx-font-size: 16;" text="First Name:" />
+                                        <TextField fx:id="PersonalDetailsFirstNameTextBox" editable="false" prefHeight="35.0" stylesheets="@../css/chartStyle.css" />
+                                    </children>
+                                </VBox>
+                                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Label style="-fx-font-family: 'Aptos Mono'; -fx-font-weight: bold; -fx-text-fill: #575279; -fx-font-size: 16;" text="Last Name:" />
+                                        <TextField fx:id="PersonalDetailsLastNameTextBox" editable="false" prefHeight="35.0" stylesheets="@../css/chartStyle.css" />
+                                    </children>
+                                </VBox>
+                            </children>
+                        </HBox>
+
+                        <HBox spacing="40.0">
+                            <children>
+                                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Label style="-fx-font-family: 'Aptos Mono'; -fx-font-weight: bold; -fx-text-fill: #575279; -fx-font-size: 16;" text="NHI:" />
+                                        <TextField fx:id="PersonalDetailsNHITextBox" editable="false" prefHeight="35.0" stylesheets="@../css/chartStyle.css" />
+                                    </children>
+                                </VBox>
+                                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Label style="-fx-font-family: 'Aptos Mono'; -fx-font-weight: bold; -fx-text-fill: #575279; -fx-font-size: 16;" text="Gender:" />
+                                        <TextField fx:id="PersonalDetailsGenderTextBox" editable="false" prefHeight="35.0" stylesheets="@../css/chartStyle.css" />
+                                    </children>
+                                </VBox>
+                            </children>
+                        </HBox>
+
+                        <HBox spacing="40.0">
+                            <children>
+                                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Label style="-fx-font-family: 'Aptos Mono'; -fx-font-weight: bold; -fx-text-fill: #575279; -fx-font-size: 16;" text="Date of Birth:" />
+                                        <TextField fx:id="PersonalDetailsDOBTextBox" editable="false" prefHeight="35.0" stylesheets="@../css/chartStyle.css" />
+                                    </children>
+                                </VBox>
+                                <VBox prefWidth="120.0" spacing="5.0">
+                                    <children>
+                                        <Label style="-fx-font-family: 'Aptos Mono'; -fx-font-weight: bold; -fx-text-fill: #575279; -fx-font-size: 16;" text="Age:" />
+                                        <TextField fx:id="PersonalDetailsAgeTextBox" editable="false" prefHeight="35.0" stylesheets="@../css/chartStyle.css" />
+                                    </children>
+                                </VBox>
+                                <VBox spacing="5.0" stylesheets="@../css/chartStyle.css" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Label style="-fx-font-family: 'Aptos Mono'; -fx-font-weight: bold; -fx-text-fill: #575279; -fx-font-size: 16;" text="Height:" />
+                                        <TextField fx:id="PersonalDetailsHeightTextBox" editable="false" prefHeight="35.0" />
+                                    </children>
+                                </VBox>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+
+                <HBox spacing="40.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        
+                        <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label style="-fx-font-family: 'Aptos Mono'; -fx-font-weight: bold; -fx-text-fill: #575279; -fx-font-size: 16px;" text="Medications:" />
+                                <TableView fx:id="PersonalDetailsMedicationsTable" stylesheets="@../css/chartStyle.css" VBox.vgrow="ALWAYS">
+                                  <columns>
+                                    <TableColumn fx:id="medNameColumn" prefWidth="200.0" text="Name" />
+                                    <TableColumn fx:id="medDosageColumn" prefWidth="200.0" text="Dosage" />
+                                  </columns>
+                                   <columnResizePolicy>
+                                      <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                   </columnResizePolicy>
+                                </TableView>
+                                <HBox spacing="15.0">
+                                    <children>
+                                        <Button fx:id="PersonalDetailsAddMedicationButton" disable="true" prefHeight="30.0" prefWidth="100.0" styleClass="button-secondary" stylesheets="@../css/chartStyle.css" text="Add" />
+                                        <Button fx:id="PersonalDetailsEditMedicationButton" disable="true" prefHeight="30.0" prefWidth="100.0" styleClass="button-secondary" stylesheets="@../css/chartStyle.css" text="Edit" />
+                                        <Button fx:id="PersonalDetailsRemoveMedicationButton" disable="true" prefHeight="30.0" prefWidth="100.0" styleClass="button-secondary" stylesheets="@../css/chartStyle.css" text="Remove" />
+                                    </children>
+                                </HBox>
+                            </children>
                         </VBox>
-                        <VBox prefHeight="54.0">
-                           <children>
-                              <Text fill="#575279" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name:" wrappingWidth="152.8140869140625">
-                                 <font>
-                                    <Font name="Aptos Mono Bold" size="16.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets bottom="5.0" />
-                                 </VBox.margin>
-                              </Text>
-                              <HBox alignment="CENTER_LEFT" spacing="15.0">
-                                 <children>
-                                    <TextField fx:id="PersonalDetailsLastNameTextBox" maxHeight="34.0" prefHeight="29.0" prefWidth="170.0" style="-fx-border-color: &quot;#a8cdd8&quot;;">
-                                       <font>
-                                          <Font name="Aptos Mono" size="14.0" />
-                                       </font>
-                                    </TextField>
-                                    <Button fx:id="PersonalDetailsEditLastNameButton" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" style="-fx-text-fill: &quot;#FFFFFF&quot;; -fx-background-color: &quot;#d7827a&quot;;" text="Edit" textFill="#575279">
-                                       <font>
-                                          <Font name="Aptos Mono Bold" size="14.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                              </HBox>
-                           </children>
+
+                        <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label style="-fx-font-family: 'Aptos Mono'; -fx-font-weight: bold; -fx-text-fill: #575279; -fx-font-size: 16px;" text="Allergies:" />
+                                <TableView fx:id="PersonalDetailsAllergiesTable" stylesheets="@../css/chartStyle.css" VBox.vgrow="ALWAYS">
+                                  <columns>
+                                    <TableColumn fx:id="allergyNameColumn" prefWidth="400.0" text="Name" />
+                                  </columns>
+                                   <columnResizePolicy>
+                                      <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                   </columnResizePolicy>
+                                </TableView>
+                                <HBox spacing="15.0">
+                                    <children>
+                                        <Button fx:id="PersonalDetailsAddAllergyButton" disable="true" prefHeight="30.0" prefWidth="100.0" styleClass="button-secondary" stylesheets="@../css/chartStyle.css" text="Add" />
+                                        <Button fx:id="PersonalDetailsRemoveAllergyButton" disable="true" prefHeight="30.0" prefWidth="100.0" styleClass="button-secondary" stylesheets="@../css/chartStyle.css" text="Remove" />
+                                    </children>
+                                </HBox>
+                            </children>
                         </VBox>
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="100.0" spacing="200.0">
-                     <children>
-                        <VBox>
-                           <children>
-                              <Text fill="#575279" strokeType="OUTSIDE" strokeWidth="0.0" text="NHI:" wrappingWidth="152.8140869140625">
-                                 <font>
-                                    <Font name="Aptos Mono Bold" size="16.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets bottom="5.0" />
-                                 </VBox.margin>
-                              </Text>
-                              <HBox alignment="CENTER_LEFT" spacing="15.0">
-                                 <children>
-                                    <TextField fx:id="PersonalDetailsNHITextBox" maxHeight="34.0" prefHeight="29.0" prefWidth="170.0" style="-fx-border-color: &quot;#a8cdd8&quot;;">
-                                       <font>
-                                          <Font name="Aptos Mono" size="14.0" />
-                                       </font>
-                                    </TextField>
-                                    <Button fx:id="PersonalDetailsEditNHIButton" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" style="-fx-text-fill: &quot;#FFFFFF&quot;; -fx-background-color: &quot;#d7827a&quot;;" text="Edit" textFill="#575279">
-                                       <font>
-                                          <Font name="Aptos Mono Bold" size="14.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </VBox>
-                        <VBox prefHeight="54.0">
-                           <children>
-                              <Text fill="#575279" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender:" wrappingWidth="152.8140869140625">
-                                 <font>
-                                    <Font name="Aptos Mono Bold" size="16.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets bottom="5.0" />
-                                 </VBox.margin>
-                              </Text>
-                              <HBox alignment="CENTER_LEFT" spacing="15.0">
-                                 <children>
-                                    <TextField fx:id="PersonalDetailsGenderTextBox" maxHeight="34.0" prefHeight="29.0" prefWidth="170.0" style="-fx-border-color: &quot;#a8cdd8&quot;;">
-                                       <font>
-                                          <Font name="Aptos Mono" size="14.0" />
-                                       </font>
-                                    </TextField>
-                                    <Button fx:id="PersonalDetailsEditGenderButton" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" style="-fx-text-fill: &quot;#FFFFFF&quot;; -fx-background-color: &quot;#d7827a&quot;;" text="Edit" textFill="#575279">
-                                       <font>
-                                          <Font name="Aptos Mono Bold" size="14.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </VBox>
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="100.0" spacing="85.0">
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                     <children>
-                        <VBox>
-                           <children>
-                              <Text fill="#575279" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of Birth:" wrappingWidth="152.8140869140625">
-                                 <font>
-                                    <Font name="Aptos Mono Bold" size="16.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets bottom="5.0" />
-                                 </VBox.margin>
-                              </Text>
-                              <HBox alignment="CENTER_LEFT" spacing="15.0">
-                                 <children>
-                                    <TextField fx:id="PersonalDetailsDOBTextBox" maxHeight="34.0" prefHeight="34.0" prefWidth="170.0" style="-fx-border-color: &quot;#a8cdd8&quot;;">
-                                       <font>
-                                          <Font name="Aptos Mono" size="14.0" />
-                                       </font>
-                                    </TextField>
-                                    <Button fx:id="PersonalDetailsEditDOBButton" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" style="-fx-text-fill: &quot;#FFFFFF&quot;; -fx-background-color: &quot;#d7827a&quot;;" text="Edit" textFill="#575279">
-                                       <font>
-                                          <Font name="Aptos Mono Bold" size="14.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </VBox>
-                        <VBox>
-                           <children>
-                              <Text fill="#575279" strokeType="OUTSIDE" strokeWidth="0.0" text="Age:" wrappingWidth="66.41412353515625">
-                                 <font>
-                                    <Font name="Aptos Mono Bold" size="16.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets bottom="5.0" />
-                                 </VBox.margin>
-                              </Text>
-                              <HBox alignment="CENTER_LEFT" spacing="15.0">
-                                 <children>
-                                    <TextField fx:id="PersonalDetailsAgeTextBox" maxHeight="34.0" prefHeight="34.0" prefWidth="55.0" style="-fx-border-color: &quot;#a8cdd8&quot;;">
-                                       <font>
-                                          <Font name="Aptos Mono" size="14.0" />
-                                       </font>
-                                    </TextField>
-                                    <Button fx:id="PersonalDetailsEditAgeButton" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" style="-fx-text-fill: &quot;#FFFFFF&quot;; -fx-background-color: &quot;#d7827a&quot;;" text="Edit" textFill="#575279">
-                                       <font>
-                                          <Font name="Aptos Mono Bold" size="14.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </VBox>
-                        <VBox>
-                           <children>
-                              <Text fill="#575279" strokeType="OUTSIDE" strokeWidth="0.0" text="Height:" wrappingWidth="108.01409912109375">
-                                 <font>
-                                    <Font name="Aptos Mono Bold" size="16.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets bottom="5.0" />
-                                 </VBox.margin>
-                              </Text>
-                              <HBox alignment="CENTER_LEFT" spacing="15.0">
-                                 <children>
-                                    <TextField fx:id="PersonalDetailsHeightTextBox" maxHeight="34.0" prefHeight="34.0" prefWidth="80.0" style="-fx-border-color: &quot;#a8cdd8&quot;;">
-                                       <font>
-                                          <Font name="Aptos Mono" size="14.0" />
-                                       </font>
-                                    </TextField>
-                                    <Button fx:id="PersonalDetailsEditHeightTextBox" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" style="-fx-text-fill: &quot;#FFFFFF&quot;; -fx-background-color: &quot;#d7827a&quot;;" text="Edit" textFill="#575279">
-                                       <font>
-                                          <Font name="Aptos Mono Bold" size="14.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </VBox>
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="230.0" prefWidth="630.0" spacing="120.0">
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                     <children>
-                        <VBox spacing="5.0">
-                           <children>
-                              <Text fill="#575279" strokeType="OUTSIDE" strokeWidth="0.0" text="Medications:" wrappingWidth="152.8140869140625">
-                                 <font>
-                                    <Font name="Aptos Mono Bold" size="16.0" />
-                                 </font>
-                              </Text>
-                              <VBox prefHeight="200.0" spacing="20.0">
-                                 <children>
-                                    <TableView fx:id="PersonalDetailsMedicationsTable" prefHeight="300.0" prefWidth="320.0">
-                                      <columns>
-                                        <TableColumn editable="false" prefWidth="240.0" sortable="false" text="Name" />
-                                        <TableColumn editable="false" sortable="false" text="Dosage" />
-                                      </columns>
-                                    </TableView>
-                                    <GridPane hgap="10.0">
-                                       <columnConstraints>
-                                          <ColumnConstraints hgrow="NEVER" />
-                                          <ColumnConstraints hgrow="NEVER" />
-                                          <ColumnConstraints hgrow="NEVER" minWidth="10.0" />
-                                       </columnConstraints>
-                                       <rowConstraints>
-                                          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                                       </rowConstraints>
-                                       <children>
-                                          <Button fx:id="PersonalDetailsAddMedicationButton" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" prefWidth="100.0" style="-fx-text-fill: &quot;#FFFFFF&quot;; -fx-background-color: &quot;#d7827a&quot;;" text="Add" textFill="#575279">
-                                             <font>
-                                                <Font name="Aptos Mono Bold" size="14.0" />
-                                             </font>
-                                          </Button>
-                                          <Button fx:id="PersonalDetailsEditMedicationButton" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" prefWidth="100.0" style="-fx-text-fill: &quot;#FFFFFF&quot;; -fx-background-color: &quot;#d7827a&quot;;" text="Edit" textFill="#575279" GridPane.columnIndex="1">
-                                             <font>
-                                                <Font name="Aptos Mono Bold" size="14.0" />
-                                             </font>
-                                          </Button>
-                                          <Button fx:id="PersonalDetailsRemoveMedicationButton" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" prefWidth="100.0" style="-fx-text-fill: &quot;#FFFFFF&quot;; -fx-background-color: &quot;#d7827a&quot;;" text="Remove" textFill="#575279" GridPane.columnIndex="2">
-                                             <font>
-                                                <Font name="Aptos Mono Bold" size="14.0" />
-                                             </font>
-                                          </Button>
-                                       </children>
-                                    </GridPane>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </VBox>
-                        <VBox prefHeight="54.0">
-                           <children>
-                              <Text fill="#575279" strokeType="OUTSIDE" strokeWidth="0.0" text="Allergies:" wrappingWidth="152.8140869140625">
-                                 <font>
-                                    <Font name="Aptos Mono Bold" size="16.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets bottom="5.0" />
-                                 </VBox.margin>
-                              </Text>
-                              <VBox prefHeight="200.0" spacing="20.0">
-                                 <children>
-                                    <TableView fx:id="PersonalDetailsAllergiesTable" prefHeight="300.0" prefWidth="320.0">
-                                       <columns>
-                                          <TableColumn editable="false" prefWidth="320.0" sortable="false" text="Name" />
-                                       </columns>
-                                    </TableView>
-                                    <GridPane hgap="10.0">
-                                       <columnConstraints>
-                                          <ColumnConstraints hgrow="NEVER" />
-                                          <ColumnConstraints hgrow="NEVER" />
-                                          <ColumnConstraints hgrow="NEVER" minWidth="10.0" />
-                                       </columnConstraints>
-                                       <rowConstraints>
-                                          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                                       </rowConstraints>
-                                       <children>
-                                          <Button fx:id="PersonalDetailsAddAllergyButton" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" prefWidth="100.0" style="-fx-text-fill: &quot;#FFFFFF&quot;; -fx-background-color: &quot;#d7827a&quot;;" text="Add" textFill="#575279">
-                                             <font>
-                                                <Font name="Aptos Mono Bold" size="14.0" />
-                                             </font>
-                                          </Button>
-                                          <Button fx:id="PersonalDetailsRemoveAllergyButton" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" prefWidth="100.0" style="-fx-text-fill: &quot;#FFFFFF&quot;; -fx-background-color: &quot;#d7827a&quot;;" text="Remove" textFill="#575279" GridPane.columnIndex="2">
-                                             <font>
-                                                <Font name="Aptos Mono Bold" size="14.0" />
-                                             </font>
-                                          </Button>
-                                       </children>
-                                    </GridPane>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </VBox>
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
-         </children>
-      </VBox>
-   </children>
+                        
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
 </AnchorPane>
