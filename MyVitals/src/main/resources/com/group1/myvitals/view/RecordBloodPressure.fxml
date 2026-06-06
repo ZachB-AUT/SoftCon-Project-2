@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="260.0" spacing="20.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group1.myvitals.controller.RecordBloodPressureController">
+   <children>
+      <Label style="-fx-font-family: 'Aptos Mono'; -fx-font-weight: bold; -fx-text-fill: #575279; -fx-font-size: 16px;" text="Data point details:" />
+      <HBox alignment="CENTER_LEFT" spacing="5.0">
+         <children>
+            <Label style="-fx-font-family: 'Aptos Mono'; -fx-font-weight: Regular; -fx-text-fill: #575279; -fx-font-size: 14;" text="Date: " />
+            <DatePicker fx:id="RecordBloodPressureDate" prefWidth="203.0" styleClass="date-picker" stylesheets="@../css/chartStyle.css" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" spacing="10.0">
+         <children>
+            <Label style="-fx-font-family: 'Aptos Mono'; -fx-font-weight: Regular; -fx-text-fill: #575279; -fx-font-size: 14;" text="Diastolic Value:" />
+            <TextField fx:id="RecordBloodPressureDiastolicValue" prefHeight="30.0" prefWidth="114.0" stylesheets="@../css/chartStyle.css" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" spacing="10.0">
+         <children>
+            <Label style="-fx-font-family: 'Aptos Mono'; -fx-font-weight: Regular; -fx-text-fill: #575279; -fx-font-size: 14;" text="Systolic Value:" />
+            <TextField fx:id="RecordBloodPressureSystolicValue" prefHeight="30.0" prefWidth="123.0" stylesheets="@../css/chartStyle.css" />
+         </children>
+      </HBox>
+      <HBox spacing="15.0">
+         <children>
+            <Button fx:id="RecordBloodPressureRecordDataButton" mnemonicParsing="false" onAction="#recordDataButtonPressed" prefWidth="150.0" styleClass="button-primary" stylesheets="@../css/chartStyle.css" text="Record Data" />
+            <Button fx:id="RecordBloodPressureCancelButton" mnemonicParsing="false" onAction="#cancelButtonPressed" prefWidth="100.0" styleClass="button-primary" stylesheets="@../css/chartStyle.css" text="Cancel" />
+         </children>
+      </HBox>
+   </children>
+</VBox>
