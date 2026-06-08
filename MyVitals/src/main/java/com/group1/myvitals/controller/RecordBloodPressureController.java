@@ -12,7 +12,7 @@ public class RecordBloodPressureController {
     @FXML private TextField RecordBloodPressureDiastolicValue;
     @FXML private TextField RecordBloodPressureSystolicValue;
     @FXML private Button RecordBloodPressureRecordDataButton;
-    @FXML private Button RecordBloodPressureCancelButton;
+    @FXML private Button RecordBloodPressureClearButton;
 
     @FXML
     public void initialize() {
@@ -63,7 +63,7 @@ public class RecordBloodPressureController {
 
     // Clear inputs and reset data
     @FXML
-    private void cancelButtonPressed() {
+    private void clearButtonPressed() {
         RecordBloodPressureDiastolicValue.clear();
         RecordBloodPressureSystolicValue.clear();
         RecordBloodPressureDate.setValue(LocalDate.now());

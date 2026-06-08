@@ -31,7 +31,7 @@
       <HBox spacing="15.0">
          <children>
             <Button fx:id="RecordBloodPressureRecordDataButton" mnemonicParsing="false" onAction="#recordDataButtonPressed" prefWidth="150.0" styleClass="button-primary" stylesheets="@../css/chartStyle.css" text="Record Data" />
-            <Button fx:id="RecordBloodPressureCancelButton" mnemonicParsing="false" onAction="#cancelButtonPressed" prefWidth="100.0" styleClass="button-primary" stylesheets="@../css/chartStyle.css" text="Cancel" />
+            <Button fx:id="RecordBloodPressureClearButton" mnemonicParsing="false" onAction="#clearButtonPressed" prefWidth="100.0" styleClass="button-primary" stylesheets="@../css/chartStyle.css" text="Clear" />
          </children>
       </HBox>
    </children>
