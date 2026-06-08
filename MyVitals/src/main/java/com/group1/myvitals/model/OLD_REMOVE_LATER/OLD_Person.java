@@ -1,15 +1,14 @@
-package com.group1.myvitals.model;
+package com.group1.myvitals.model.OLD_REMOVE_LATER;
 
-import java.util.HashMap;
-import java.util.HashSet;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.HashMap;
+import java.util.HashSet;
 
 /**
  * @author kaylag
  */
-
 
 public class Person {
 
@@ -20,13 +19,25 @@ public class Person {
     private double Height;
     private String Gender;
     private String NHI;
-    private HashMap<String, Integer> Medications = new HashMap<String,Integer>();
+    private HashMap<String, Integer> Medications = new HashMap<
+        String,
+        Integer
+    >();
     private HashSet<String> Allergies = new HashSet<String>();
 
-    static final DateTimeFormatter DOB_FORMAT = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    static final DateTimeFormatter DOB_FORMAT = DateTimeFormatter.ofPattern(
+        "dd/MM/yyyy"
+    );
 
-    // Constructors 
-    public Person(String name, int age, String dob, double height, String gender, String nhi) {
+    // Constructors
+    public Person(
+        String name,
+        int age,
+        String dob,
+        double height,
+        String gender,
+        String nhi
+    ) {
         this.setName(name);
         this.setAge(age);
         this.setDOB(dob);
@@ -35,7 +46,7 @@ public class Person {
         this.setNHI(nhi);
     }
 
-    public Person(){}
+    public Person() {}
 
     // ****************************** Get and Setters **********************************
     public String getName() {
@@ -54,11 +65,11 @@ public class Person {
         this.Age = age;
     }
 
-    public String getDOBFormatted(){
+    public String getDOBFormatted() {
         return this.DOB != null ? this.DOB.format(DOB_FORMAT) : "00/00/0000";
     }
 
-    public LocalDate getDOB(){
+    public LocalDate getDOB() {
         return this.DOB;
     }
 
@@ -70,7 +81,7 @@ public class Person {
             throw new IllegalArgumentException("Invalid date: " + input);
         }
     }
- 
+
     public void setDOB(LocalDate dob) {
         this.DOB = dob;
     }
@@ -96,7 +107,9 @@ public class Person {
     }
 
     public void setHeight(double height) {
-        if (height < 0) throw new IllegalArgumentException("Height cannot be negative.");
+        if (height < 0) throw new IllegalArgumentException(
+            "Height cannot be negative."
+        );
         this.Height = height;
     }
 
@@ -124,11 +137,10 @@ public class Person {
         this.Allergies.remove(capitalise(allergy));
     }
 
-
     // ****************************** Other functions ************************************
 
     // Custom capitalise function
-    public String capitalise(String input){
-        return input.substring(0,1).toUpperCase() + input.substring(1);
+    public String capitalise(String input) {
+        return input.substring(0, 1).toUpperCase() + input.substring(1);
     }
 }
