@@ -77,11 +77,11 @@ public class DB_DataInterface {
     private void initSchema() {
         try (Statement smt = conn.createStatement()) {
             // SYS.SYSTABLES is Derby's system catalog — check before creating
-            ResultSet rs = smt.executeQuery(
-                "SELECT COUNT(*) FROM SYS.SYSTABLES WHERE TABLENAME = 'DATA_TYPES' AND SCHEMANAME = 'APP'"
-            );
-            rs.next();
-            if (rs.getInt(1) > 0) return;
+            // ResultSet rs = smt.executeQuery(
+            //     "SELECT COUNT(*) FROM SYS.SYSTABLES WHERE TABLENAME = 'DATA_TYPES' AND SCHEMANAME = 'APP'"
+            // );
+            // rs.next();
+            // if (rs.getInt(1) > 0) return;
 
             smt.execute(
                 """
@@ -184,7 +184,8 @@ public class DB_DataInterface {
      * Returns the id of the named data type.
      * @throws NoSuchElementException if not found
      */
-    public int getDataTypeId(String dataTypeName) throws NoSuchElementException {
+    public int getDataTypeId(String dataTypeName)
+        throws NoSuchElementException {
         String sql = "SELECT id FROM data_types WHERE name = ?";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, dataTypeName);
@@ -193,7 +194,9 @@ public class DB_DataInterface {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        throw new NoSuchElementException("Data type not found: " + dataTypeName);
+        throw new NoSuchElementException(
+            "Data type not found: " + dataTypeName
+        );
     }
 
     // ---- Data Points ----
@@ -237,6 +240,29 @@ public class DB_DataInterface {
     }
 
     /**
+     * Inserts a data point linked to a user by data type name using the current timestamp.
+     * @throws NoSuchElementException if dataTypeName is not found
+     */
+    public void addDataPoint(String dataTypeName, String value, int userId)
+        throws NoSuchElementException {
+        int typeId = getDataTypeId(dataTypeName);
+        String current_time = new java.text.SimpleDateFormat(
+            "yyyy-MM-dd'T'HH:mm:ss"
+        ).format(new java.util.Date());
+        String sql =
+            "INSERT INTO data_points (data_type_id, user_id, value, recorded_at) VALUES (?, ?, ?, ?)";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, typeId);
+            pstmt.setInt(2, userId);
+            pstmt.setString(3, value);
+            pstmt.setString(4, current_time);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * Inserts a data point by data type name with a specific timestamp.
      * @param recorded_at ISO 8601 date string, e.g. "2024-03-15T10:30:00"
      * @throws NoSuchElementException if dataTypeName is not found
@@ -273,12 +299,37 @@ public class DB_DataInterface {
      * Returns all data points for the given data type id.
      * Each row is [id, value, recorded_at].
      */
-    public ArrayList<String[]> getDataPoints(int dataTypeId) {
+    public ArrayList<String[]> getDataPoints(int dataTypeId, int userid) {
         ArrayList<String[]> result = new ArrayList<>();
         String sql =
-            "SELECT id, value, recorded_at FROM data_points WHERE data_type_id = ?";
+            "SELECT id, value, recorded_at FROM data_points WHERE data_type_id = ? AND user_id = ?";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, dataTypeId);
+            pstmt.setInt(2, userid);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                result.add(new String[] {
+                    String.valueOf(rs.getInt("id")),
+                    rs.getString("value"),
+                    rs.getString("recorded_at"),
+                });
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    /**
+     * Returns all data points for the given user id across all data types.
+     * Each row is [id, value, recorded_at].
+     */
+    public ArrayList<String[]> getDataPointsByUser(int userId) {
+        ArrayList<String[]> result = new ArrayList<>();
+        String sql =
+            "SELECT id, value, recorded_at FROM data_points WHERE user_id = ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, userId);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 result.add(new String[] {
@@ -300,8 +351,7 @@ public class DB_DataInterface {
     public int getDataPointCount(String dataTypeName)
         throws NoSuchElementException {
         int typeId = getDataTypeId(dataTypeName);
-        String sql =
-            "SELECT COUNT(*) FROM data_points WHERE data_type_id = ?";
+        String sql = "SELECT COUNT(*) FROM data_points WHERE data_type_id = ?";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, typeId);
             ResultSet rs = pstmt.executeQuery();
@@ -469,8 +519,7 @@ public class DB_DataInterface {
     }
 
     public void removeMedication(int userId, String name) {
-        String sql =
-            "DELETE FROM medications WHERE user_id = ? AND name = ?";
+        String sql = "DELETE FROM medications WHERE user_id = ? AND name = ?";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, userId);
             pstmt.setString(2, capitalise(name));
@@ -512,8 +561,7 @@ public class DB_DataInterface {
     }
 
     public void removeAllergy(int userId, String allergy) {
-        String sql =
-            "DELETE FROM allergies WHERE user_id = ? AND allergy = ?";
+        String sql = "DELETE FROM allergies WHERE user_id = ? AND allergy = ?";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, userId);
             pstmt.setString(2, capitalise(allergy));

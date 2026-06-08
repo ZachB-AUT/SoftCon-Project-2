@@ -1,7 +1,7 @@
 ----------------------------------------------------------------
-Mon Jun 08 13:05:15 NZST 2026:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): instance a816c00e-019e-a4c3-2cbd-000002967ff8 
-on database directory memory:/Users/zachb/University/Assignments/Assignments_2026/Software Construction/Project/SoftCon-Project-2/MyVitals/MyVitalsDB with class loader org.codehaus.mojo.exec.URLClassLoaderBuilder$ExecJavaClassLoader@3a01773b 
+Mon Jun 08 16:36:14 NZST 2026:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): instance a816c00e-019e-a584-564d-00000bffae28 
+on database directory memory:/Users/zachb/University/Assignments/Assignments_2026/Software Construction/Project/SoftCon-Project-2/MyVitals/MyVitalsDB with class loader org.codehaus.mojo.exec.URLClassLoaderBuilder$ExecJavaClassLoader@3baf6936 
 Loaded from file:/Users/zachb/.m2/repository/org/apache/derby/derby/10.16.1.1/derby-10.16.1.1.jar
 java.vendor=Homebrew
 java.runtime.version=25.0.2
@@ -11,9 +11,3 @@ os.arch=aarch64
 os.version=15.2
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''
-----------------------------------------------------------------
-Mon Jun 08 13:05:15 NZST 2026: Shutting down Derby engine
-----------------------------------------------------------------
-Mon Jun 08 13:05:15 NZST 2026:
-Shutting down instance a816c00e-019e-a4c3-2cbd-000002967ff8 on database directory memory:/Users/zachb/University/Assignments/Assignments_2026/Software Construction/Project/SoftCon-Project-2/MyVitals/MyVitalsDB with class loader org.codehaus.mojo.exec.URLClassLoaderBuilder$ExecJavaClassLoader@3a01773b 
-----------------------------------------------------------------
