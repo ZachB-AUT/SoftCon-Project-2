@@ -22,7 +22,7 @@ public class DB_learn {
         DB_DataInterface db = new DB_DataInterface();
         dbl.populate(db);
         dbl.print_user_datapoints(db, 1);
-        db.closeConnection();
+
     }
 
     private void populate(DB_DataInterface db) {

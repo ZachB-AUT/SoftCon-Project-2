@@ -1,5 +1,6 @@
 package com.group1.myvitals.controller;
 
+import com.group1.myvitals.model.Session;
 import com.group1.myvitals.view.SceneManager;
 import java.io.IOException;
 import javafx.fxml.FXML;
@@ -13,7 +14,6 @@ public class MainMenuController {
 
     @FXML
     public void initialize() {
-        // Load the home page as the default centre content on startup
         showHomePage();
     }
 
@@ -51,7 +51,8 @@ public class MainMenuController {
 
     @FXML
     public void logout() {
-        
+        Session.getInstance().logout();
+        SceneManager.getInstance().showLogin();
     }
 
     // ===================== Helper =====================
@@ -62,6 +63,11 @@ public class MainMenuController {
                 getClass().getResource(fxmlPath)
             );
             Parent content = loader.load();
+            // Pass this controller to child controllers that need navigation
+            Object ctrl = loader.getController();
+            if (ctrl instanceof MainMenuAware aware) {
+                aware.setMainMenuController(this);
+            }
             mainMenuBorderPane.setCenter(content);
         } catch (IOException e) {
             System.err.println("Error loading centre content: " + fxmlPath);

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.NoSuchElementException;
+import org.mindrot.jbcrypt.BCrypt;
 
 /*
  * The database stores users, dataTypes, and dataPoints.
@@ -58,10 +59,16 @@ public class DB_DataInterface {
     private Connection conn;
 
     private String[][] initialDataTypes = {
-        { "heart_rate", "bpm" },
-        { "blood_pressure", "mmHg" },
-        { "sleep_distance", "km" },
-        { "respiratory_rate", "breaths/minute" },
+        { "heart_rate",        "bpm"            },
+        { "blood_pressure",    "mmHg"           },
+        { "sleep_duration",    "hours"          },
+        { "respiratory_rate",  "breaths/min"    },
+        { "body_temperature",  "°C"             },
+        { "weight",            "kg"             },
+        { "blood_glucose",     "mmol/L"         },
+        { "oxygen_saturation", "%"              },
+        { "steps",             "steps/day"      },
+        { "bmi",               "kg/m²"          },
     };
 
     public DB_DataInterface() {
@@ -86,13 +93,15 @@ public class DB_DataInterface {
             smt.execute(
                 """
                 CREATE TABLE users (
-                    id     INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-                    name   varchar(100) NOT NULL,
-                    age    INTEGER,
-                    dob    varchar(10),
-                    height DOUBLE,
-                    gender varchar(30),
-                    nhi    varchar(20) UNIQUE
+                    id            INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+                    name          varchar(100) NOT NULL,
+                    age           INTEGER,
+                    dob           varchar(10),
+                    height        DOUBLE,
+                    gender        varchar(30),
+                    nhi           varchar(20) UNIQUE,
+                    username      varchar(50) UNIQUE,
+                    password_hash varchar(60)
                 )
                 """
             );
@@ -286,7 +295,7 @@ public class DB_DataInterface {
     }
 
     /**
-     * Returns all data points for the named data type.
+     * Returns all data points for the named data type (all users).
      * Each row is [id, value, recorded_at].
      * @throws NoSuchElementException if dataTypeName is not found
      */
@@ -296,7 +305,31 @@ public class DB_DataInterface {
     }
 
     /**
-     * Returns all data points for the given data type id.
+     * Returns all data points for the given data type id (all users).
+     * Each row is [id, value, recorded_at].
+     */
+    public ArrayList<String[]> getDataPoints(int dataTypeId) {
+        ArrayList<String[]> result = new ArrayList<>();
+        String sql =
+            "SELECT id, value, recorded_at FROM data_points WHERE data_type_id = ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, dataTypeId);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                result.add(new String[] {
+                    String.valueOf(rs.getInt("id")),
+                    rs.getString("value"),
+                    rs.getString("recorded_at"),
+                });
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    /**
+     * Returns all data points for the given data type id and user.
      * Each row is [id, value, recorded_at].
      */
     public ArrayList<String[]> getDataPoints(int dataTypeId, int userid) {
@@ -435,10 +468,10 @@ public class DB_DataInterface {
         ) {
             pstmt.setString(1, capitalise(name));
             pstmt.setInt(2, age);
-            pstmt.setString(3, dob);
+            pstmt.setString(3, dob.isEmpty() ? null : dob);
             pstmt.setDouble(4, height);
-            pstmt.setString(5, capitalise(gender));
-            pstmt.setString(6, capitalise(nhi));
+            pstmt.setString(5, gender.isEmpty() ? null : capitalise(gender));
+            pstmt.setString(6, nhi.isEmpty() ? null : capitalise(nhi));
             pstmt.executeUpdate();
             ResultSet keys = pstmt.getGeneratedKeys();
             if (keys.next()) return keys.getInt(1);
@@ -587,6 +620,86 @@ public class DB_DataInterface {
             e.printStackTrace();
         }
         return result;
+    }
+
+    // ---- Auth ----
+
+    /**
+     * Registers a new user with a hashed password.
+     * Returns the generated user id, or -1 if the username is already taken.
+     */
+    public int registerUser(
+        String username,
+        String password,
+        String name,
+        int age,
+        String dob,
+        double height,
+        String gender,
+        String nhi
+    ) {
+        String hash = BCrypt.hashpw(password, BCrypt.gensalt());
+        String sql =
+            "INSERT INTO users (username, password_hash, name, age, dob, height, gender, nhi) " +
+            "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        try (
+            PreparedStatement pstmt = conn.prepareStatement(
+                sql,
+                Statement.RETURN_GENERATED_KEYS
+            )
+        ) {
+            pstmt.setString(1, username.toLowerCase());
+            pstmt.setString(2, hash);
+            pstmt.setString(3, capitalise(name));
+            pstmt.setInt(4, age);
+            pstmt.setString(5, dob.isEmpty() ? null : dob);
+            pstmt.setDouble(6, height);
+            pstmt.setString(7, gender.isEmpty() ? null : capitalise(gender));
+            // Store NULL for empty NHI to avoid UNIQUE constraint conflicts
+            pstmt.setString(8, nhi.isEmpty() ? null : capitalise(nhi));
+            pstmt.executeUpdate();
+            ResultSet keys = pstmt.getGeneratedKeys();
+            if (keys.next()) return keys.getInt(1);
+        } catch (SQLException e) {
+            // UNIQUE constraint on username violated — return -1
+        }
+        return -1;
+    }
+
+    /**
+     * Verifies login credentials.
+     * Returns the user id on success, or -1 if credentials are invalid.
+     */
+    public int verifyLogin(String username, String password) {
+        String sql = "SELECT id, password_hash FROM users WHERE username = ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, username.toLowerCase());
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                String hash = rs.getString("password_hash");
+                if (hash != null && BCrypt.checkpw(password, hash)) {
+                    return rs.getInt("id");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
+
+    /**
+     * Updates the password hash for the given user.
+     */
+    public void updatePassword(int userId, String newPassword) {
+        String hash = BCrypt.hashpw(newPassword, BCrypt.gensalt());
+        String sql = "UPDATE users SET password_hash = ? WHERE id = ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, hash);
+            pstmt.setInt(2, userId);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     // ---- Helpers ----
