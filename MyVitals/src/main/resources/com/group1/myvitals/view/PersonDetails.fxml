@@ -16,7 +16,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="675.0" style="-fx-background-color: #faf4ed;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group1.myvitals.controller.PersonDetailsPageController">
    <children>
-      <VBox layoutX="15.0" layoutY="15.0" spacing="20.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.bottomAnchor="15.0">
+      <VBox layoutX="15.0" layoutY="15.0" spacing="20.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
          <children>
             <Text fill="#575279" strokeType="OUTSIDE" strokeWidth="0.0" text="Personal Details" wrappingWidth="641.8359527587891">
                <font>
@@ -53,7 +53,7 @@
                                           <Font name="Aptos Mono" size="14.0" />
                                        </font>
                                     </TextField>
-                                    <Button fx:id="PersonalDetailsEditFirstNameButton" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" style="-fx-text-fill: &quot;#FFFFFF&quot;; -fx-background-color: &quot;#d7827a&quot;;" text="Edit" textFill="#575279">
+                                    <Button fx:id="PersonalDetailsEditFirstNameButton" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" style="-fx-text-fill: &quot;#FFFFFF&quot;; -fx-background-color: &quot;#d7827a&quot;;" styleClass="button-primary" stylesheets="@../css/GUIStyle.css" text="Edit" textFill="#575279">
                                        <font>
                                           <Font name="Aptos Mono Bold" size="14.0" />
                                        </font>
@@ -79,7 +79,7 @@
                                           <Font name="Aptos Mono" size="14.0" />
                                        </font>
                                     </TextField>
-                                    <Button fx:id="PersonalDetailsEditLastNameButton" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" style="-fx-text-fill: &quot;#FFFFFF&quot;; -fx-background-color: &quot;#d7827a&quot;;" text="Edit" textFill="#575279">
+                                    <Button fx:id="PersonalDetailsEditLastNameButton" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" style="-fx-text-fill: &quot;#FFFFFF&quot;; -fx-background-color: &quot;#d7827a&quot;;" styleClass="button-primary" stylesheets="@../css/GUIStyle.css" text="Edit" textFill="#575279">
                                        <font>
                                           <Font name="Aptos Mono Bold" size="14.0" />
                                        </font>
@@ -109,7 +109,7 @@
                                           <Font name="Aptos Mono" size="14.0" />
                                        </font>
                                     </TextField>
-                                    <Button fx:id="PersonalDetailsEditNHIButton" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" style="-fx-text-fill: &quot;#FFFFFF&quot;; -fx-background-color: &quot;#d7827a&quot;;" text="Edit" textFill="#575279">
+                                    <Button fx:id="PersonalDetailsEditNHIButton" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" style="-fx-text-fill: &quot;#FFFFFF&quot;; -fx-background-color: &quot;#d7827a&quot;;" styleClass="button-primary" stylesheets="@../css/GUIStyle.css" text="Edit" textFill="#575279">
                                        <font>
                                           <Font name="Aptos Mono Bold" size="14.0" />
                                        </font>
@@ -135,7 +135,7 @@
                                           <Font name="Aptos Mono" size="14.0" />
                                        </font>
                                     </TextField>
-                                    <Button fx:id="PersonalDetailsEditGenderButton" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" style="-fx-text-fill: &quot;#FFFFFF&quot;; -fx-background-color: &quot;#d7827a&quot;;" text="Edit" textFill="#575279">
+                                    <Button fx:id="PersonalDetailsEditGenderButton" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" style="-fx-text-fill: &quot;#FFFFFF&quot;; -fx-background-color: &quot;#d7827a&quot;;" styleClass="button-primary" stylesheets="@../css/GUIStyle.css" text="Edit" textFill="#575279">
                                        <font>
                                           <Font name="Aptos Mono Bold" size="14.0" />
                                        </font>
@@ -168,7 +168,7 @@
                                           <Font name="Aptos Mono" size="14.0" />
                                        </font>
                                     </TextField>
-                                    <Button fx:id="PersonalDetailsEditDOBButton" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" style="-fx-text-fill: &quot;#FFFFFF&quot;; -fx-background-color: &quot;#d7827a&quot;;" text="Edit" textFill="#575279">
+                                    <Button fx:id="PersonalDetailsEditDOBButton" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" style="-fx-text-fill: &quot;#FFFFFF&quot;; -fx-background-color: &quot;#d7827a&quot;;" styleClass="button-primary" stylesheets="@../css/GUIStyle.css" text="Edit" textFill="#575279">
                                        <font>
                                           <Font name="Aptos Mono Bold" size="14.0" />
                                        </font>
@@ -194,7 +194,7 @@
                                           <Font name="Aptos Mono" size="14.0" />
                                        </font>
                                     </TextField>
-                                    <Button fx:id="PersonalDetailsEditAgeButton" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" style="-fx-text-fill: &quot;#FFFFFF&quot;; -fx-background-color: &quot;#d7827a&quot;;" text="Edit" textFill="#575279">
+                                    <Button fx:id="PersonalDetailsEditAgeButton" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" style="-fx-text-fill: &quot;#FFFFFF&quot;; -fx-background-color: &quot;#d7827a&quot;;" styleClass="button-primary" stylesheets="@../css/GUIStyle.css" text="Edit" textFill="#575279">
                                        <font>
                                           <Font name="Aptos Mono Bold" size="14.0" />
                                        </font>
@@ -220,7 +220,7 @@
                                           <Font name="Aptos Mono" size="14.0" />
                                        </font>
                                     </TextField>
-                                    <Button fx:id="PersonalDetailsEditHeightTextBox" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" style="-fx-text-fill: &quot;#FFFFFF&quot;; -fx-background-color: &quot;#d7827a&quot;;" text="Edit" textFill="#575279">
+                                    <Button fx:id="PersonalDetailsEditHeightTextBox" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" style="-fx-text-fill: &quot;#FFFFFF&quot;; -fx-background-color: &quot;#d7827a&quot;;" styleClass="button-primary" stylesheets="@../css/GUIStyle.css" text="Edit" textFill="#575279">
                                        <font>
                                           <Font name="Aptos Mono Bold" size="14.0" />
                                        </font>
@@ -261,17 +261,17 @@
                                           <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                        <children>
-                                          <Button fx:id="PersonalDetailsAddMedicationButton" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" prefWidth="100.0" style="-fx-text-fill: &quot;#FFFFFF&quot;; -fx-background-color: &quot;#d7827a&quot;;" text="Add" textFill="#575279">
+                                          <Button fx:id="PersonalDetailsAddMedicationButton" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" prefWidth="100.0" style="-fx-text-fill: &quot;#FFFFFF&quot;; -fx-background-color: &quot;#d7827a&quot;;" styleClass="button-primary" stylesheets="@../css/GUIStyle.css" text="Add" textFill="#575279">
                                              <font>
                                                 <Font name="Aptos Mono Bold" size="14.0" />
                                              </font>
                                           </Button>
-                                          <Button fx:id="PersonalDetailsEditMedicationButton" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" prefWidth="100.0" style="-fx-text-fill: &quot;#FFFFFF&quot;; -fx-background-color: &quot;#d7827a&quot;;" text="Edit" textFill="#575279" GridPane.columnIndex="1">
+                                          <Button fx:id="PersonalDetailsEditMedicationButton" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" prefWidth="100.0" style="-fx-text-fill: &quot;#FFFFFF&quot;; -fx-background-color: &quot;#d7827a&quot;;" styleClass="button-primary" stylesheets="@../css/GUIStyle.css" text="Edit" textFill="#575279" GridPane.columnIndex="1">
                                              <font>
                                                 <Font name="Aptos Mono Bold" size="14.0" />
                                              </font>
                                           </Button>
-                                          <Button fx:id="PersonalDetailsRemoveMedicationButton" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" prefWidth="100.0" style="-fx-text-fill: &quot;#FFFFFF&quot;; -fx-background-color: &quot;#d7827a&quot;;" text="Remove" textFill="#575279" GridPane.columnIndex="2">
+                                          <Button fx:id="PersonalDetailsRemoveMedicationButton" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" prefWidth="100.0" style="-fx-text-fill: &quot;#FFFFFF&quot;; -fx-background-color: &quot;#d7827a&quot;;" styleClass="button-primary" stylesheets="@../css/GUIStyle.css" text="Remove" textFill="#575279" GridPane.columnIndex="2">
                                              <font>
                                                 <Font name="Aptos Mono Bold" size="14.0" />
                                              </font>
@@ -309,12 +309,12 @@
                                           <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                        <children>
-                                          <Button fx:id="PersonalDetailsAddAllergyButton" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" prefWidth="100.0" style="-fx-text-fill: &quot;#FFFFFF&quot;; -fx-background-color: &quot;#d7827a&quot;;" text="Add" textFill="#575279">
+                                          <Button fx:id="PersonalDetailsAddAllergyButton" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" prefWidth="100.0" style="-fx-text-fill: &quot;#FFFFFF&quot;; -fx-background-color: &quot;#d7827a&quot;;" styleClass="button-primary" stylesheets="@../css/GUIStyle.css" text="Add" textFill="#575279">
                                              <font>
                                                 <Font name="Aptos Mono Bold" size="14.0" />
                                              </font>
                                           </Button>
-                                          <Button fx:id="PersonalDetailsRemoveAllergyButton" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" prefWidth="100.0" style="-fx-text-fill: &quot;#FFFFFF&quot;; -fx-background-color: &quot;#d7827a&quot;;" text="Remove" textFill="#575279" GridPane.columnIndex="2">
+                                          <Button fx:id="PersonalDetailsRemoveAllergyButton" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" prefWidth="100.0" style="-fx-text-fill: &quot;#FFFFFF&quot;; -fx-background-color: &quot;#d7827a&quot;;" styleClass="button-primary" stylesheets="@../css/GUIStyle.css" text="Remove" textFill="#575279" GridPane.columnIndex="2">
                                              <font>
                                                 <Font name="Aptos Mono Bold" size="14.0" />
                                              </font>
