@@ -43,13 +43,6 @@
             <version>10.16.1.1</version>
         </dependency>
 
-        <!-- BCrypt for password hashing -->
-        <dependency>
-            <groupId>org.mindrot</groupId>
-            <artifactId>jbcrypt</artifactId>
-            <version>0.4</version>
-        </dependency>
-
         <!-- Typst PDF report generation (correct artifact ID from Project 1) -->
         <dependency>
             <groupId>io.github.fatihcatalkaya</groupId>
@@ -78,7 +71,7 @@
                 <configuration>
                     <release>25</release>
                     <compilerArgs>
-                        <!-- Allow named module to read classpath jars (Derby, BCrypt) -->
+                        <!-- Allow named module to read classpath jars (Derby) -->
                         <arg>--add-reads</arg>
                         <arg>com.group1.myvitals=ALL-UNNAMED</arg>
                     </compilerArgs>

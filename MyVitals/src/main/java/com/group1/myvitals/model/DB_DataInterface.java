@@ -10,7 +10,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.NoSuchElementException;
-import org.mindrot.jbcrypt.BCrypt;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 /*
  * The database stores users, dataTypes, and dataPoints.
@@ -59,16 +60,16 @@ public class DB_DataInterface {
     private Connection conn;
 
     private String[][] initialDataTypes = {
-        { "heart_rate",        "bpm"            },
-        { "blood_pressure",    "mmHg"           },
-        { "sleep_duration",    "hours"          },
-        { "respiratory_rate",  "breaths/min"    },
-        { "body_temperature",  "°C"             },
-        { "weight",            "kg"             },
-        { "blood_glucose",     "mmol/L"         },
-        { "oxygen_saturation", "%"              },
-        { "steps",             "steps/day"      },
-        { "bmi",               "kg/m²"          },
+        { "heart_rate", "bpm" },
+        { "blood_pressure", "mmHg" },
+        { "sleep_duration", "hours" },
+        { "respiratory_rate", "breaths/min" },
+        // { "body_temperature",  "°C"             },
+        // { "weight",            "kg"             },
+        // { "blood_glucose",     "mmol/L"         },
+        // { "oxygen_saturation", "%"              },
+        // { "steps",             "steps/day"      },
+        // { "bmi",               "kg/m²"          },
     };
 
     public DB_DataInterface() {
@@ -101,7 +102,7 @@ public class DB_DataInterface {
                     gender        varchar(30),
                     nhi           varchar(20) UNIQUE,
                     username      varchar(50) UNIQUE,
-                    password_hash varchar(60)
+                    password_hash varchar(64)
                 )
                 """
             );
@@ -638,7 +639,7 @@ public class DB_DataInterface {
         String gender,
         String nhi
     ) {
-        String hash = BCrypt.hashpw(password, BCrypt.gensalt());
+        String hash = hashPassword(password);
         String sql =
             "INSERT INTO users (username, password_hash, name, age, dob, height, gender, nhi) " +
             "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -677,7 +678,7 @@ public class DB_DataInterface {
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
                 String hash = rs.getString("password_hash");
-                if (hash != null && BCrypt.checkpw(password, hash)) {
+                if (hash != null && hash.equals(hashPassword(password))) {
                     return rs.getInt("id");
                 }
             }
@@ -691,7 +692,7 @@ public class DB_DataInterface {
      * Updates the password hash for the given user.
      */
     public void updatePassword(int userId, String newPassword) {
-        String hash = BCrypt.hashpw(newPassword, BCrypt.gensalt());
+        String hash = hashPassword(newPassword);
         String sql = "UPDATE users SET password_hash = ? WHERE id = ?";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, hash);
@@ -703,6 +704,18 @@ public class DB_DataInterface {
     }
 
     // ---- Helpers ----
+
+    private static String hashPassword(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] bytes = md.digest(password.getBytes(java.nio.charset.StandardCharsets.UTF_8));
+            StringBuilder sb = new StringBuilder();
+            for (byte b : bytes) sb.append(String.format("%02x", b));
+            return sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException("SHA-256 not available", e);
+        }
+    }
 
     private static String capitalise(String input) {
         if (input == null || input.isEmpty()) return input;
