@@ -11,12 +11,12 @@ import java.util.HashSet;
 public class ReportGenerator {
 
     private static final String PREAMBLE = """
-        #let userName = [%s]
-        #let userDOB  = [%s]
-        #let height   = [%s m]
-        #let gender   = [%s]
-        #let nhi      = [%s]
-        #let meds     = [%s]
+        #let userName  = [%s]
+        #let userDOB   = [%s]
+        #let height    = [%s m]
+        #let gender    = [%s]
+        #let nhi       = [%s]
+        #let meds      = [%s]
         #let allergies = [%s]
 
         #let rose      = rgb("#d7827a")
@@ -61,55 +61,92 @@ public class ReportGenerator {
     }
 
     private String buildTypstDocument() {
-        String[] user  = db.get_user(userId);
-        String name    = user != null ? user[1] : "Unknown";
-        String dob     = user != null ? user[3] : "—";
-        String height  = user != null ? user[4] : "—";
-        String gender  = user != null ? user[5] : "—";
-        String nhi     = user != null ? user[6] : "—";
+        String[] user = db.get_user(userId);
+        String name = user != null ? user[1] : "Unknown";
+        String dob = user != null ? user[3] : "—";
+        String height = user != null ? user[4] : "—";
+        String gender = user != null ? user[5] : "—";
+        String nhi = user != null ? user[6] : "—";
 
-        HashMap<String, Integer> meds   = db.getMedications(userId);
-        HashSet<String>          allrgs = db.getAllergies(userId);
+        HashMap<String, Integer> meds = db.getMedications(userId);
+        HashSet<String> allrgs = db.getAllergies(userId);
 
-        String medsStr   = meds.isEmpty() ? "None" :
-            meds.entrySet().stream()
-                .map(e -> e.getKey() + " " + e.getValue() + " mg")
-                .reduce((a, b) -> a + ", " + b).orElse("None");
-        String allergyStr = allrgs.isEmpty() ? "None" : String.join(", ", allrgs);
+        String medsStr = meds.isEmpty()
+            ? "None"
+            : meds
+                  .entrySet()
+                  .stream()
+                  .map(e -> e.getKey() + " " + e.getValue() + " mg")
+                  .reduce((a, b) -> a + ", " + b)
+                  .orElse("None");
+        String allergyStr = allrgs.isEmpty()
+            ? "None"
+            : String.join(", ", allrgs);
 
         StringBuilder doc = new StringBuilder();
-        doc.append(String.format(PREAMBLE, name, dob, height, gender, nhi, medsStr, allergyStr));
+        doc.append(
+            String.format(
+                PREAMBLE,
+                name,
+                dob,
+                height,
+                gender,
+                nhi,
+                medsStr,
+                allergyStr
+            )
+        );
 
         for (String[] dt : db.getDataTypes()) {
-            int    typeId   = Integer.parseInt(dt[0]);
+            int typeId = Integer.parseInt(dt[0]);
             String typeName = dt[1];
-            String unit     = dt[2];
-            doc.append(buildDataSection(typeName, unit, db.getDataPoints(typeId, userId)));
+            String unit = dt[2];
+            doc.append(
+                buildDataSection(
+                    typeName,
+                    unit,
+                    db.getDataPoints(typeId, userId)
+                )
+            );
         }
 
         return doc.toString();
     }
 
-    private String buildDataSection(String typeName, String unit, ArrayList<String[]> points) {
+    private String buildDataSection(
+        String typeName,
+        String unit,
+        ArrayList<String[]> points
+    ) {
         if (points.isEmpty()) {
-            return String.format("""
+            return String.format(
+                """
 
                 #pagebreak()
                 = %s
                 #v(2em)
                 #align(center)[#text(size: 16pt)[No data recorded.]]
-                """, typeName);
+                """,
+                typeName
+            );
         }
 
         StringBuilder sb = new StringBuilder();
-        sb.append(String.format("""
+        sb.append(
+            String.format(
+                """
 
-            #pagebreak()
-            = %s
-            #table(
-                columns: (1fr, 3fr),
-                table.header([Date], [%s (%s)]),
-            """, typeName, typeName, unit));
+                #pagebreak()
+                = %s
+                #table(
+                    columns: (1fr, 3fr),
+                    table.header([Date], [%s (%s)]),
+                """,
+                typeName,
+                typeName,
+                unit
+            )
+        );
 
         for (String[] p : points) {
             sb.append(String.format("    [%s], [%s],\n", p[2], p[1]));
@@ -124,7 +161,7 @@ public class ReportGenerator {
      */
     public String generatePdf(String outputPath) throws IOException {
         String typst = buildTypstDocument();
-        byte[] pdf   = JavaTypst.render(typst);
+        byte[] pdf = JavaTypst.render(typst);
         try (FileOutputStream fos = new FileOutputStream(outputPath)) {
             fos.write(pdf);
         }
