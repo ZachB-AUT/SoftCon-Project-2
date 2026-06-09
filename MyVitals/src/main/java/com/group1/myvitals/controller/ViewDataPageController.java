@@ -41,14 +41,27 @@ public class ViewDataPageController {
             ArrayList<String[]> points = db.getDataPoints(typeId, userId);
             if (points.isEmpty()) continue;
 
+            boolean isDualValue = points.stream().anyMatch(p -> p[1] != null && p[1].contains("/"));
+
             XYChart.Series<String, Number> series = new XYChart.Series<>();
             series.setName(typeName);
+            XYChart.Series<String, Number> series2 = isDualValue ? new XYChart.Series<>() : null;
+            if (series2 != null) series2.setName("Diastolic");
+
             for (String[] point : points) {
                 String label = point[2] != null && point[2].length() >= 10
                     ? point[2].substring(0, 10) : point[2];
                 try {
-                    double val = Double.parseDouble(point[1]);
-                    series.getData().add(new XYChart.Data<>(label, val));
+                    if (isDualValue && point[1] != null && point[1].contains("/")) {
+                        String[] parts = point[1].split("/");
+                        double systolic = Double.parseDouble(parts[0].trim());
+                        double diastolic = Double.parseDouble(parts[1].trim());
+                        series.getData().add(new XYChart.Data<>(label, systolic));
+                        series2.getData().add(new XYChart.Data<>(label, diastolic));
+                    } else {
+                        double val = Double.parseDouble(point[1]);
+                        series.getData().add(new XYChart.Data<>(label, val));
+                    }
                 } catch (NumberFormatException ignored) {}
             }
             if (series.getData().isEmpty()) continue;
@@ -56,8 +69,15 @@ public class ViewDataPageController {
             CategoryAxis xAxis = new CategoryAxis();
             NumberAxis yAxis = new NumberAxis();
             LineChart<String, Number> chart = new LineChart<>(xAxis, yAxis);
-            chart.getData().add(series);
-            chart.setLegendVisible(false);
+            if (isDualValue) {
+                series.setName("Systolic");
+                chart.getData().add(series);
+                chart.getData().add(series2);
+                chart.setLegendVisible(true);
+            } else {
+                chart.getData().add(series);
+                chart.setLegendVisible(false);
+            }
             chart.setPrefSize(295, 180);
 
             String displayName = typeName.replace("_", " ");

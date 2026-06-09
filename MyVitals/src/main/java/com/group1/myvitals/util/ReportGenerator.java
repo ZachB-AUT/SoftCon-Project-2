@@ -7,18 +7,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Set;
 
 public class ReportGenerator {
 
-    private static final String PREAMBLE = """
-        #let userName  = [%s]
-        #let userDOB   = [%s]
-        #let height    = [%s m]
-        #let gender    = [%s]
-        #let nhi       = [%s]
-        #let meds      = [%s]
-        #let allergies = [%s]
-
+    private static final String SETUP = """
         #let rose      = rgb("#d7827a")
         #let pine_text = rgb("#575279")
 
@@ -31,23 +24,12 @@ public class ReportGenerator {
           table.cell(colspan: 3, align: center, inset: 1em)[
             #text(size: 20pt)[*MyVitals Health Data Report*]
           ],
-          [Name:],          table.cell(colspan: 2)[#userName],
-          [Date of Birth:], table.cell(colspan: 2)[#userDOB],
+          [Name:],          table.cell(colspan: 2)[%s],
+          [Date of Birth:], table.cell(colspan: 2)[%s],
         )
 
         #outline()
         #pagebreak()
-
-        = Personal Data
-
-        #table(
-          columns: (1fr, 2fr),
-          [*NHI Number:*], [#nhi],
-          [*Height:*],     [#height],
-          [*Gender:*],     [#gender],
-          [*Medications:*],[#meds],
-          [*Allergies:*],  [#allergies],
-        )
 
         #set table(fill: (x, y) => if y == 0 { rgb("#f2e9e1") })
         """;
@@ -60,93 +42,102 @@ public class ReportGenerator {
         this.userId = userId;
     }
 
-    private String buildTypstDocument() {
+    private String buildTypstDocument(boolean inclPersonal, boolean inclMedications,
+                                      boolean inclAllergies, Set<Integer> selectedTypeIds) {
         String[] user = db.get_user(userId);
-        String name = user != null ? user[1] : "Unknown";
-        String dob = user != null ? user[3] : "—";
+        String name   = user != null ? user[1] : "Unknown";
+        String dob    = user != null ? user[3] : "—";
         String height = user != null ? user[4] : "—";
         String gender = user != null ? user[5] : "—";
-        String nhi = user != null ? user[6] : "—";
+        String nhi    = user != null ? user[6] : "—";
 
-        HashMap<String, Integer> meds = db.getMedications(userId);
-        HashSet<String> allrgs = db.getAllergies(userId);
-
-        String medsStr = meds.isEmpty()
-            ? "None"
-            : meds
-                  .entrySet()
-                  .stream()
-                  .map(e -> e.getKey() + " " + e.getValue() + " mg")
-                  .reduce((a, b) -> a + ", " + b)
-                  .orElse("None");
-        String allergyStr = allrgs.isEmpty()
-            ? "None"
-            : String.join(", ", allrgs);
+        HashMap<String, Integer> meds  = db.getMedications(userId);
+        HashSet<String>          allrgs = db.getAllergies(userId);
 
         StringBuilder doc = new StringBuilder();
-        doc.append(
-            String.format(
-                PREAMBLE,
-                name,
-                dob,
-                height,
-                gender,
-                nhi,
-                medsStr,
-                allergyStr
-            )
-        );
+        doc.append(String.format(SETUP, name, dob));
+
+        if (inclPersonal) {
+            doc.append(String.format("""
+
+                #pagebreak()
+                = Personal Details
+                #table(
+                  columns: (1fr, 2fr),
+                  [*NHI Number:*], [%s],
+                  [*Height:*],     [%s m],
+                  [*Gender:*],     [%s],
+                )
+                """, nhi, height, gender));
+        }
+
+        if (inclMedications) {
+            String medsStr = meds.isEmpty()
+                ? "None"
+                : meds.entrySet().stream()
+                      .map(e -> e.getKey() + " " + e.getValue() + " mg")
+                      .reduce((a, b) -> a + ", " + b)
+                      .orElse("None");
+            doc.append(String.format("""
+
+                #pagebreak()
+                = Medications
+                #table(
+                  columns: (1fr, 2fr),
+                  table.header([Medication], [Dosage]),
+                  %s
+                )
+                """, buildMedsRows(meds)));
+        }
+
+        if (inclAllergies) {
+            doc.append(String.format("""
+
+                #pagebreak()
+                = Allergies
+                %s
+                """, allrgs.isEmpty()
+                    ? "#align(center)[#text(size: 16pt)[None recorded.]]"
+                    : "#list(" + allrgs.stream().map(a -> "[" + a + "]").reduce((a, b) -> a + ", " + b).orElse("") + ")"));
+        }
 
         for (String[] dt : db.getDataTypes()) {
             int typeId = Integer.parseInt(dt[0]);
-            String typeName = dt[1];
-            String unit = dt[2];
-            doc.append(
-                buildDataSection(
-                    typeName,
-                    unit,
-                    db.getDataPoints(typeId, userId)
-                )
-            );
+            if (!selectedTypeIds.contains(typeId)) continue;
+            doc.append(buildDataSection(dt[1], dt[2], db.getDataPoints(typeId, userId)));
         }
 
         return doc.toString();
     }
 
-    private String buildDataSection(
-        String typeName,
-        String unit,
-        ArrayList<String[]> points
-    ) {
+    private String buildMedsRows(HashMap<String, Integer> meds) {
+        if (meds.isEmpty()) return "[None], [],";
+        StringBuilder sb = new StringBuilder();
+        meds.forEach((name, dose) ->
+            sb.append(String.format("  [%s], [%d mg],\n", name, dose)));
+        return sb.toString();
+    }
+
+    private String buildDataSection(String typeName, String unit, ArrayList<String[]> points) {
         if (points.isEmpty()) {
-            return String.format(
-                """
+            return String.format("""
 
                 #pagebreak()
                 = %s
                 #v(2em)
                 #align(center)[#text(size: 16pt)[No data recorded.]]
-                """,
-                typeName
-            );
+                """, typeName);
         }
 
         StringBuilder sb = new StringBuilder();
-        sb.append(
-            String.format(
-                """
+        sb.append(String.format("""
 
-                #pagebreak()
-                = %s
-                #table(
-                    columns: (1fr, 3fr),
-                    table.header([Date], [%s (%s)]),
-                """,
-                typeName,
-                typeName,
-                unit
-            )
-        );
+            #pagebreak()
+            = %s
+            #table(
+                columns: (1fr, 3fr),
+                table.header([Date], [%s (%s)]),
+            """, typeName, typeName, unit));
 
         for (String[] p : points) {
             sb.append(String.format("    [%s], [%s],\n", p[2], p[1]));
@@ -155,12 +146,9 @@ public class ReportGenerator {
         return sb.toString();
     }
 
-    /**
-     * Renders the report to PDF and writes it to outputPath.
-     * @return the absolute path of the written file
-     */
-    public String generatePdf(String outputPath) throws IOException {
-        String typst = buildTypstDocument();
+    public String generatePdf(String outputPath, boolean inclPersonal, boolean inclMedications,
+                               boolean inclAllergies, Set<Integer> selectedTypeIds) throws IOException {
+        String typst = buildTypstDocument(inclPersonal, inclMedications, inclAllergies, selectedTypeIds);
         byte[] pdf = JavaTypst.render(typst);
         try (FileOutputStream fos = new FileOutputStream(outputPath)) {
             fos.write(pdf);

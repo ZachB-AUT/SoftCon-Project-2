@@ -2,16 +2,18 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="675.0" style="-fx-background-color: #faf4ed;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group1.myvitals.controller.CreateReportPageController">
+<AnchorPane prefHeight="680.0" prefWidth="675.0" style="-fx-background-color: #faf4ed;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group1.myvitals.controller.CreateReportPageController">
    <children>
-      <VBox layoutX="15.0" layoutY="15.0" spacing="20.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.bottomAnchor="15.0">
+      <VBox layoutX="15.0" layoutY="15.0" spacing="16.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.bottomAnchor="15.0">
          <children>
             <Text fill="#575279" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Report" wrappingWidth="641.8359527587891">
                <font>
@@ -21,6 +23,33 @@
                   <Insets left="15.0" />
                </VBox.margin>
             </Text>
+
+            <!-- Section selection -->
+            <VBox spacing="8.0">
+               <VBox.margin>
+                  <Insets left="15.0" />
+               </VBox.margin>
+               <Label text="Include in Report:" textFill="#575279">
+                  <font><Font name="Aptos Mono Bold" size="14.0" /></font>
+               </Label>
+               <CheckBox fx:id="cbPersonal" selected="true" text="Personal Details" textFill="#575279">
+                  <font><Font name="Aptos Mono" size="13.0" /></font>
+               </CheckBox>
+               <CheckBox fx:id="cbMedications" selected="true" text="Medications" textFill="#575279">
+                  <font><Font name="Aptos Mono" size="13.0" /></font>
+               </CheckBox>
+               <CheckBox fx:id="cbAllergies" selected="true" text="Allergies" textFill="#575279">
+                  <font><Font name="Aptos Mono" size="13.0" /></font>
+               </CheckBox>
+               <Separator>
+                  <VBox.margin><Insets top="4.0" bottom="4.0" /></VBox.margin>
+               </Separator>
+               <Label text="Health Data:" textFill="#575279">
+                  <font><Font name="Aptos Mono Bold" size="14.0" /></font>
+               </Label>
+               <VBox fx:id="dataTypeCheckboxes" spacing="8.0" />
+            </VBox>
+
             <Button fx:id="CreateReportButton" mnemonicParsing="false" onAction="#handleGenerate" prefHeight="35.0" prefWidth="200.0" style="-fx-text-fill: &quot;#FFFFFF&quot;; -fx-background-color: &quot;#d7827a&quot;;" text="Generate Report">
                <font>
                   <Font name="Aptos Mono Bold" size="16.0" />
