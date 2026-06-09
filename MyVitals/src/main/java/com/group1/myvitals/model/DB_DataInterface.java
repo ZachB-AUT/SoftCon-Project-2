@@ -157,9 +157,63 @@ public class DB_DataInterface implements VitalsDAO {
             for (String[] dt : initialDataTypes) {
                 insert_data_type(dt[0], dt[1]);
             }
+            seedExampleUser();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    private void seedExampleUser() {
+        int userId = registerUser(
+            "demo", "demo123",
+            "Jane Smith", 35, "15/06/1990", 1.68, "Female", "ZXC9876"
+        );
+        if (userId == -1) return;
+
+        addMedication(userId, "Lisinopril", 10);
+        addMedication(userId, "Aspirin", 100);
+        addAllergy(userId, "Penicillin");
+        addAllergy(userId, "Pollen");
+
+        String[][] heartRateReadings = {
+            { "2026-05-01T08:00:00", "68" },
+            { "2026-05-05T09:15:00", "72" },
+            { "2026-05-10T07:45:00", "75" },
+            { "2026-05-15T08:30:00", "70" },
+            { "2026-05-20T09:00:00", "74" },
+            { "2026-05-25T08:00:00", "69" },
+            { "2026-06-01T08:00:00", "71" },
+        };
+        String[][] bloodPressureReadings = {
+            { "2026-05-01T08:05:00", "120/80" },
+            { "2026-05-10T07:50:00", "118/76" },
+            { "2026-05-20T09:05:00", "122/82" },
+            { "2026-06-01T08:05:00", "119/78" },
+        };
+        String[][] sleepReadings = {
+            { "2026-05-01T07:00:00", "7.5" },
+            { "2026-05-05T07:00:00", "6.8" },
+            { "2026-05-10T07:00:00", "8.0" },
+            { "2026-05-15T07:00:00", "7.2" },
+            { "2026-05-20T07:00:00", "6.5" },
+            { "2026-05-25T07:00:00", "7.8" },
+            { "2026-06-01T07:00:00", "7.0" },
+        };
+        String[][] respRateReadings = {
+            { "2026-05-01T08:10:00", "16" },
+            { "2026-05-15T08:10:00", "15" },
+            { "2026-06-01T08:10:00", "16" },
+        };
+
+        int hrId  = getDataTypeId("heart_rate");
+        int bpId  = getDataTypeId("blood_pressure");
+        int slId  = getDataTypeId("sleep_duration");
+        int rrId  = getDataTypeId("respiratory_rate");
+
+        for (String[] r : heartRateReadings)   insert_data_point(hrId, userId, r[1], r[0]);
+        for (String[] r : bloodPressureReadings) insert_data_point(bpId, userId, r[1], r[0]);
+        for (String[] r : sleepReadings)        insert_data_point(slId, userId, r[1], r[0]);
+        for (String[] r : respRateReadings)     insert_data_point(rrId, userId, r[1], r[0]);
     }
 
     // ---- Data Types ----
