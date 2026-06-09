@@ -1,6 +1,6 @@
 package com.group1.myvitals.controller;
 
-import com.group1.myvitals.model.DB_DataInterface;
+import com.group1.myvitals.model.dao.VitalsDAO;
 import com.group1.myvitals.model.Session;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -41,7 +41,7 @@ public class HomePageController implements MainMenuAware {
 
         // Count today's data points for this user
         int userId = Session.getInstance().getCurrentUserId();
-        DB_DataInterface db = Session.getInstance().getDb();
+        VitalsDAO db = Session.getInstance().getDb();
         ArrayList<String[]> allPoints = db.getDataPointsByUser(userId);
         String todayPrefix = LocalDate.now().toString(); // YYYY-MM-DD
         long todayCount = allPoints.stream()
@@ -53,7 +53,7 @@ public class HomePageController implements MainMenuAware {
         loadChartData(db, userId);
     }
 
-    private void loadChartData(DB_DataInterface db, int userId) {
+    private void loadChartData(VitalsDAO db, int userId) {
         HomePageDataPointsInLastMonthGraph.getData().clear();
         ArrayList<String[]> dataTypes = db.getDataTypes();
 

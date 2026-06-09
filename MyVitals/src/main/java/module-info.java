@@ -10,6 +10,9 @@ module com.group1.myvitals {
     // Derby is not fully modularised so it is accessed
     // via the classpath as an unnamed module - no requires needed here
 
+    // Typst PDF generation (automatic module)
+    requires java.typst;
+
     // Opens packages so JavaFX can access controllers via reflection
     opens com.group1.myvitals.view        to javafx.fxml;
     opens com.group1.myvitals.controller to javafx.fxml;
@@ -18,4 +21,5 @@ module com.group1.myvitals {
     // Exports so test code (unnamed module) can access these packages
     exports com.group1.myvitals.view;
     exports com.group1.myvitals.model;
+    exports com.group1.myvitals.model.dao;
 }

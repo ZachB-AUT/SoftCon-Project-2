@@ -13,7 +13,7 @@ import javafx.stage.Stage;
  * Pattern: Observer (lightweight) — onComplete callback notifies
  * PersonDetailsPageController to refresh its tables after the operation.
  */
-public class AllergyController {
+public class AllergyController extends AbstractDialogController {
 
     public enum Mode { ADD_ALLERGY, REMOVE_ALLERGY }
 
@@ -22,14 +22,9 @@ public class AllergyController {
     @FXML private Button AllergyActionButton;
 
     private Mode mode = Mode.ADD_ALLERGY;
-    private Runnable onComplete;
 
     public void setMode(Mode mode) {
         this.mode = mode;
-    }
-
-    public void setOnComplete(Runnable callback) {
-        this.onComplete = callback;
     }
 
     /** Call this after setMode() to populate mode-specific data. */
@@ -46,7 +41,8 @@ public class AllergyController {
     }
 
     @FXML
-    private void handleAction() {
+    @Override
+    protected void handleAction() {
         int userId = Session.getInstance().getCurrentUserId();
         var db = Session.getInstance().getDb();
 
@@ -62,16 +58,11 @@ public class AllergyController {
             }
         }
 
-        if (onComplete != null) onComplete.run();
-        closeWindow();
+        complete();
     }
 
-    @FXML
-    private void handleExit() {
-        closeWindow();
-    }
-
-    private void closeWindow() {
+    @Override
+    protected void closeWindow() {
         Stage stage;
         if (AllergyActionButton != null) {
             stage = (Stage) AllergyActionButton.getScene().getWindow();

@@ -13,7 +13,7 @@ import javafx.stage.Stage;
  * Pattern: Observer (lightweight) — onComplete callback notifies
  * PersonDetailsPageController to refresh its tables after the operation.
  */
-public class PersonController {
+public class PersonController extends AbstractDialogController {
 
     public enum Mode { ADD_MEDICATION, EDIT_MEDICATION, REMOVE_MEDICATION }
 
@@ -23,14 +23,9 @@ public class PersonController {
     @FXML private Button MedicationAddButton;
 
     private Mode mode = Mode.ADD_MEDICATION;
-    private Runnable onComplete;
 
     public void setMode(Mode mode) {
         this.mode = mode;
-    }
-
-    public void setOnComplete(Runnable callback) {
-        this.onComplete = callback;
     }
 
     @FXML
@@ -42,7 +37,8 @@ public class PersonController {
     }
 
     @FXML
-    private void handleAction() {
+    @Override
+    protected void handleAction() {
         String name = MedicationNameTextBox.getText().trim();
 
         if (name.isEmpty()) {
@@ -67,20 +63,15 @@ public class PersonController {
             }
         }
 
-        if (onComplete != null) onComplete.run();
-        closeWindow();
-    }
-
-    @FXML
-    private void handleExit() {
-        closeWindow();
+        complete();
     }
 
     private int parseDosage(String text) {
         try { return Integer.parseInt(text); } catch (NumberFormatException e) { return 0; }
     }
 
-    private void closeWindow() {
+    @Override
+    protected void closeWindow() {
         Stage stage = (Stage) MedicationAddButton.getScene().getWindow();
         stage.close();
     }

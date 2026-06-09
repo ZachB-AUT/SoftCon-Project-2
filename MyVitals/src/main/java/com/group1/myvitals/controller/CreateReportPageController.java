@@ -1,6 +1,6 @@
 package com.group1.myvitals.controller;
 
-import com.group1.myvitals.model.DB_DataInterface;
+import com.group1.myvitals.model.dao.VitalsDAO;
 import com.group1.myvitals.model.Session;
 import com.group1.myvitals.util.ReportGenerator;
 import java.io.FileWriter;
@@ -24,7 +24,7 @@ public class CreateReportPageController {
     @FXML
     private void handleGenerate() {
         int userId = Session.getInstance().getCurrentUserId();
-        DB_DataInterface db = Session.getInstance().getDb();
+        VitalsDAO db = Session.getInstance().getDb();
 
         String[] user = db.get_user(userId);
         String name = user != null ? user[1] : "user";
@@ -53,7 +53,7 @@ public class CreateReportPageController {
         }
     }
 
-    private String buildTextPreview(DB_DataInterface db, int userId) {
+    private String buildTextPreview(VitalsDAO db, int userId) {
         StringBuilder sb = new StringBuilder();
         String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 

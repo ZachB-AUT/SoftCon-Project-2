@@ -1,7 +1,9 @@
 package com.group1.myvitals.model;
 
-import java.security.MessageDigest;
+import com.group1.myvitals.model.dao.VitalsDAO;
 import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.spec.InvalidKeySpecException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -12,6 +14,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.NoSuchElementException;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
 
 /*
  * The database stores users, dataTypes, and dataPoints.
@@ -53,10 +57,9 @@ import java.util.NoSuchElementException;
 /**
  * @author zachb
  */
-public class DB_DataInterface {
+public class DB_DataInterface implements VitalsDAO {
 
-    private static final String DB_URL =
-        "jdbc:derby:memory:MyVitalsDB;create=true";
+    private static final String DB_URL = "jdbc:derby:MyVitalsDB;create=true";
     private Connection conn;
 
     private String[][] initialDataTypes = {
@@ -64,17 +67,22 @@ public class DB_DataInterface {
         { "blood_pressure", "mmHg" },
         { "sleep_duration", "hours" },
         { "respiratory_rate", "breaths/min" },
-        // { "body_temperature",  "°C"             },
-        // { "weight",            "kg"             },
-        // { "blood_glucose",     "mmol/L"         },
-        // { "oxygen_saturation", "%"              },
-        // { "steps",             "steps/day"      },
-        // { "bmi",               "kg/m²"          },
+        // { "body_temperature", "°C" },
+        // { "weight", "kg" },
+        // { "blood_glucose", "mmol/L" },
+        // { "oxygen_saturation", "%" },
+        // { "steps", "steps/day" },
+        // { "bmi", "kg/m²" },
     };
 
     public DB_DataInterface() {
+        this(DB_URL);
+    }
+
+    /** Package-private constructor for tests — accepts an explicit JDBC URL. */
+    DB_DataInterface(String dbUrl) {
         try {
-            conn = DriverManager.getConnection(DB_URL);
+            conn = DriverManager.getConnection(dbUrl);
         } catch (SQLException e) {
             e.printStackTrace();
             return;
@@ -102,7 +110,7 @@ public class DB_DataInterface {
                     gender        varchar(30),
                     nhi           varchar(20) UNIQUE,
                     username      varchar(50) UNIQUE,
-                    password_hash varchar(64)
+                    password_hash varchar(128)
                 )
                 """
             );
@@ -678,7 +686,7 @@ public class DB_DataInterface {
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
                 String hash = rs.getString("password_hash");
-                if (hash != null && hash.equals(hashPassword(password))) {
+                if (hash != null && verifyPassword(password, hash)) {
                     return rs.getInt("id");
                 }
             }
@@ -705,18 +713,70 @@ public class DB_DataInterface {
 
     // ---- Helpers ----
 
+    private static final int PBKDF2_ITERATIONS = 65536;
+    private static final int PBKDF2_KEY_BITS = 256;
+    private static final int SALT_BYTES = 16;
+
+    /**
+     * Hashes a password with PBKDF2WithHmacSHA256.
+     * Returns "{hex-salt}${hex-hash}" — 97 characters total.
+     */
     private static String hashPassword(String password) {
         try {
-            MessageDigest md = MessageDigest.getInstance("SHA-256");
-            byte[] bytes = md.digest(
-                password.getBytes(java.nio.charset.StandardCharsets.UTF_8)
-            );
-            StringBuilder sb = new StringBuilder();
-            for (byte b : bytes) sb.append(String.format("%02x", b));
-            return sb.toString();
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException("SHA-256 not available", e);
+            byte[] salt = new byte[SALT_BYTES];
+            new SecureRandom().nextBytes(salt);
+            byte[] hash = pbkdf2(password.toCharArray(), salt);
+            return toHex(salt) + "$" + toHex(hash);
+        } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
+            throw new RuntimeException("Password hashing failed", e);
         }
+    }
+
+    /**
+     * Verifies a plain-text password against a stored "{hex-salt}${hex-hash}" value.
+     */
+    private static boolean verifyPassword(String password, String stored) {
+        try {
+            String[] parts = stored.split("\\$", 2);
+            if (parts.length != 2) return false;
+            byte[] salt = fromHex(parts[0]);
+            byte[] expectedHash = fromHex(parts[1]);
+            byte[] actualHash = pbkdf2(password.toCharArray(), salt);
+            return java.util.Arrays.equals(expectedHash, actualHash);
+        } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
+            return false;
+        }
+    }
+
+    private static byte[] pbkdf2(char[] password, byte[] salt)
+        throws NoSuchAlgorithmException, InvalidKeySpecException {
+        PBEKeySpec spec = new PBEKeySpec(
+            password,
+            salt,
+            PBKDF2_ITERATIONS,
+            PBKDF2_KEY_BITS
+        );
+        SecretKeyFactory skf = SecretKeyFactory.getInstance(
+            "PBKDF2WithHmacSHA256"
+        );
+        return skf.generateSecret(spec).getEncoded();
+    }
+
+    private static String toHex(byte[] bytes) {
+        StringBuilder sb = new StringBuilder(bytes.length * 2);
+        for (byte b : bytes) sb.append(String.format("%02x", b));
+        return sb.toString();
+    }
+
+    private static byte[] fromHex(String hex) {
+        byte[] bytes = new byte[hex.length() / 2];
+        for (int i = 0; i < bytes.length; i++) {
+            bytes[i] = (byte) Integer.parseInt(
+                hex.substring(i * 2, i * 2 + 2),
+                16
+            );
+        }
+        return bytes;
     }
 
     private static String capitalise(String input) {

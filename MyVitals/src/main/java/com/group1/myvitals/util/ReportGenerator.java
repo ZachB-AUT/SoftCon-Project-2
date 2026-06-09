@@ -1,6 +1,6 @@
 package com.group1.myvitals.util;
 
-import com.group1.myvitals.model.DB_DataInterface;
+import com.group1.myvitals.model.dao.VitalsDAO;
 import io.github.fatihcatalkaya.javatypst.JavaTypst;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -52,10 +52,10 @@ public class ReportGenerator {
         #set table(fill: (x, y) => if y == 0 { rgb("#f2e9e1") })
         """;
 
-    private final DB_DataInterface db;
+    private final VitalsDAO db;
     private final int userId;
 
-    public ReportGenerator(DB_DataInterface db, int userId) {
+    public ReportGenerator(VitalsDAO db, int userId) {
         this.db = db;
         this.userId = userId;
     }

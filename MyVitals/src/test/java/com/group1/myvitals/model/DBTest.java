@@ -18,7 +18,7 @@ public class DBTest {
 
     @BeforeClass
     public static void setup() {
-        db = new DB_DataInterface();
+        db = new DB_DataInterface("jdbc:derby:memory:TestDB;create=true");
     }
 
     // --- Test 1: User Registration and Retrieval ---

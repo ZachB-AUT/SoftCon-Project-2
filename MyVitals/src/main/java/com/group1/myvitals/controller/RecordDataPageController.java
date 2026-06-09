@@ -1,6 +1,6 @@
 package com.group1.myvitals.controller;
 
-import com.group1.myvitals.model.DB_DataInterface;
+import com.group1.myvitals.model.dao.VitalsDAO;
 import com.group1.myvitals.model.Session;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -19,7 +19,7 @@ public class RecordDataPageController {
     @FXML private Button RecordDataSubmitButton;
     @FXML private Label RecordDataStatusLabel;
 
-    private DB_DataInterface db;
+    private VitalsDAO db;
     private int userId;
 
     @FXML
