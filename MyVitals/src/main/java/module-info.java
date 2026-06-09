@@ -10,6 +10,9 @@ module com.group1.myvitals {
     // Derby and BCrypt are not fully modularised so they are accessed
     // via the classpath as unnamed modules - no requires needed here
 
+    // Typst PDF generation (automatic module)
+    requires java.typst;
+
     // Opens packages so JavaFX can access controllers via reflection
     opens com.group1.myvitals.view        to javafx.fxml;
     opens com.group1.myvitals.controller to javafx.fxml;

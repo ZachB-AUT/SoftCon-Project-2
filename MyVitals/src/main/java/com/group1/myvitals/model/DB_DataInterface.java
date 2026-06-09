@@ -59,8 +59,7 @@ import javax.crypto.spec.PBEKeySpec;
  */
 public class DB_DataInterface implements VitalsDAO {
 
-    private static final String DB_URL =
-        "jdbc:derby:memory:MyVitalsDB;create=true";
+    private static final String DB_URL = "jdbc:derby:MyVitalsDB;create=true";
     private Connection conn;
 
     private String[][] initialDataTypes = {
@@ -68,17 +67,22 @@ public class DB_DataInterface implements VitalsDAO {
         { "blood_pressure", "mmHg" },
         { "sleep_duration", "hours" },
         { "respiratory_rate", "breaths/min" },
-        { "body_temperature", "°C" },
-        { "weight", "kg" },
-        { "blood_glucose", "mmol/L" },
-        { "oxygen_saturation", "%" },
-        { "steps", "steps/day" },
-        { "bmi", "kg/m²" },
+        // { "body_temperature", "°C" },
+        // { "weight", "kg" },
+        // { "blood_glucose", "mmol/L" },
+        // { "oxygen_saturation", "%" },
+        // { "steps", "steps/day" },
+        // { "bmi", "kg/m²" },
     };
 
     public DB_DataInterface() {
+        this(DB_URL);
+    }
+
+    /** Package-private constructor for tests — accepts an explicit JDBC URL. */
+    DB_DataInterface(String dbUrl) {
         try {
-            conn = DriverManager.getConnection(DB_URL);
+            conn = DriverManager.getConnection(dbUrl);
         } catch (SQLException e) {
             e.printStackTrace();
             return;
@@ -710,8 +714,8 @@ public class DB_DataInterface implements VitalsDAO {
     // ---- Helpers ----
 
     private static final int PBKDF2_ITERATIONS = 65536;
-    private static final int PBKDF2_KEY_BITS   = 256;
-    private static final int SALT_BYTES         = 16;
+    private static final int PBKDF2_KEY_BITS = 256;
+    private static final int SALT_BYTES = 16;
 
     /**
      * Hashes a password with PBKDF2WithHmacSHA256.
@@ -735,9 +739,9 @@ public class DB_DataInterface implements VitalsDAO {
         try {
             String[] parts = stored.split("\\$", 2);
             if (parts.length != 2) return false;
-            byte[] salt         = fromHex(parts[0]);
+            byte[] salt = fromHex(parts[0]);
             byte[] expectedHash = fromHex(parts[1]);
-            byte[] actualHash   = pbkdf2(password.toCharArray(), salt);
+            byte[] actualHash = pbkdf2(password.toCharArray(), salt);
             return java.util.Arrays.equals(expectedHash, actualHash);
         } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
             return false;
@@ -745,9 +749,16 @@ public class DB_DataInterface implements VitalsDAO {
     }
 
     private static byte[] pbkdf2(char[] password, byte[] salt)
-            throws NoSuchAlgorithmException, InvalidKeySpecException {
-        PBEKeySpec spec = new PBEKeySpec(password, salt, PBKDF2_ITERATIONS, PBKDF2_KEY_BITS);
-        SecretKeyFactory skf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
+        throws NoSuchAlgorithmException, InvalidKeySpecException {
+        PBEKeySpec spec = new PBEKeySpec(
+            password,
+            salt,
+            PBKDF2_ITERATIONS,
+            PBKDF2_KEY_BITS
+        );
+        SecretKeyFactory skf = SecretKeyFactory.getInstance(
+            "PBKDF2WithHmacSHA256"
+        );
         return skf.generateSecret(spec).getEncoded();
     }
 
@@ -760,7 +771,10 @@ public class DB_DataInterface implements VitalsDAO {
     private static byte[] fromHex(String hex) {
         byte[] bytes = new byte[hex.length() / 2];
         for (int i = 0; i < bytes.length; i++) {
-            bytes[i] = (byte) Integer.parseInt(hex.substring(i * 2, i * 2 + 2), 16);
+            bytes[i] = (byte) Integer.parseInt(
+                hex.substring(i * 2, i * 2 + 2),
+                16
+            );
         }
         return bytes;
     }
