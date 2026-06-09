@@ -19,7 +19,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="675.0" style="-fx-background-color: #faf4ed;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group1.myvitals.controller.HomePageController">
    <children>
-      <VBox layoutX="15.0" layoutY="15.0" spacing="30.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.bottomAnchor="15.0">
+      <VBox layoutX="15.0" layoutY="15.0" spacing="30.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
          <children>
             <Text fill="#575279" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to MyVitals! " wrappingWidth="611.4359283447266">
                <font>
@@ -79,7 +79,7 @@
                   <Insets left="15.0" />
                </padding>
             </HBox>
-            <StackedBarChart fx:id="HomePageDataPointsInLastMonthGraph" VBox.vgrow="ALWAYS" style="-fx-background-color: #faf4ed;" title="Data points recorded in the past month">
+            <StackedBarChart fx:id="HomePageDataPointsInLastMonthGraph" style="-fx-background-color: #faf4ed;" stylesheets="@../css/GUIStyle.css" title="Data points recorded in the past month" VBox.vgrow="ALWAYS">
               <xAxis>
                 <CategoryAxis prefWidth="690.0" side="BOTTOM" />
               </xAxis>
@@ -111,7 +111,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button fx:id="HomePageRecordDataButton" graphicTextGap="7.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #d7827a;" text="Record Data" textFill="#faf4ed" GridPane.columnSpan="2">
+                        <Button fx:id="HomePageRecordDataButton" graphicTextGap="7.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #d7827a;" styleClass="button-primary" stylesheets="@../css/GUIStyle.css" text="Record Data" textFill="#faf4ed" GridPane.columnSpan="2">
                            <font>
                               <Font name="Aptos Mono" size="16.0" />
                            </font>
@@ -123,7 +123,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="HomePageViewDataButton" graphicTextGap="7.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #d7827a;" text="View Data" textFill="#faf4ed" GridPane.columnIndex="2" GridPane.columnSpan="2">
+                        <Button fx:id="HomePageViewDataButton" graphicTextGap="7.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #d7827a;" styleClass="button-primary" stylesheets="@../css/GUIStyle.css" text="View Data" textFill="#faf4ed" GridPane.columnIndex="2" GridPane.columnSpan="2">
                            <font>
                               <Font name="Aptos Mono" size="16.0" />
                            </font>
@@ -135,7 +135,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="HomePagePersonDetailsButton" graphicTextGap="7.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #d7827a;" text="Personal Details" textFill="#faf4ed" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                        <Button fx:id="HomePagePersonDetailsButton" graphicTextGap="7.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #d7827a;" styleClass="button-primary" stylesheets="@../css/GUIStyle.css" text="Personal Details" textFill="#faf4ed" GridPane.columnSpan="2" GridPane.rowIndex="1">
                            <font>
                               <Font name="Aptos Mono" size="16.0" />
                            </font>
@@ -147,7 +147,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="HomePageSettingsButton" graphicTextGap="7.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #d7827a;" text="Settings" textFill="#faf4ed" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                        <Button fx:id="HomePageSettingsButton" graphicTextGap="7.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #d7827a;" styleClass="button-primary" stylesheets="@../css/GUIStyle.css" text="Settings" textFill="#faf4ed" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="1">
                            <font>
                               <Font name="Aptos Mono" size="16.0" />
                            </font>
@@ -159,7 +159,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="HomePageLogoutButton" graphicTextGap="7.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #d7827a;" text="Logout" textFill="#faf4ed" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                        <Button fx:id="HomePageLogoutButton" graphicTextGap="7.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #d7827a;" styleClass="button-primary" stylesheets="@../css/GUIStyle.css" text="Logout" textFill="#faf4ed" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="1">
                            <font>
                               <Font name="Aptos Mono" size="16.0" />
                            </font>
@@ -171,7 +171,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="HomePageCreateReportButton" graphicTextGap="7.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #d7827a;" text="Create Report" textFill="#faf4ed" GridPane.columnIndex="4" GridPane.columnSpan="2">
+                        <Button fx:id="HomePageCreateReportButton" graphicTextGap="7.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #d7827a;" styleClass="button-primary" stylesheets="@../css/GUIStyle.css" text="Create Report" textFill="#faf4ed" GridPane.columnIndex="4" GridPane.columnSpan="2">
                            <font>
                               <Font name="Aptos Mono" size="16.0" />
                            </font>

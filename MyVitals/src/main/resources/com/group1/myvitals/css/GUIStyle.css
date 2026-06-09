@@ -1,0 +1,449 @@
+/********************** GENERAL CHART STYLING **********************/
+
+.chart-plot-background {
+    -fx-background-color: transparent;
+}
+
+.chart-vertical-grid-lines {
+    -fx-stroke: transparent;
+}
+.chart-horizontal-grid-lines {
+    -fx-stroke: #cecacd; 
+    -fx-stroke-dash-array: 2px, 2px;
+}
+
+.chart-bar {
+    -fx-background-insets: 0;
+}
+
+/* LEGEND STYLE */
+.chart-legend {
+   -fx-background-color: transparent;
+}
+
+.chart-legend-item {
+    -fx-text-fill: #575279; 
+    -fx-font-family: "Aptos Mono";
+    -fx-font-size: 12px;
+}
+
+/* AXIS STYLE */
+.axis .axis-label {
+    -fx-text-fill: #575279;         
+    -fx-font-family: "Aptos Mono"; 
+    -fx-font-size: 12px;             
+}
+
+.axis .tick-label {
+    -fx-text-fill: #575279;      
+    -fx-font-family: "Aptos Mono";  
+    -fx-font-size: 10px;       
+}
+
+/* MAIN TITLE STYLE */
+.chart-title {
+    -fx-text-fill: #575279;  
+    -fx-font-family: "Aptos Mono"; 
+    -fx-font-size: 18px;     
+    -fx-padding: 0 0 10px 0;  
+}
+
+/********************** GLOBAL DATA SERIES COLOURS **********************/
+
+.default-color0.chart-bar { -fx-bar-fill: #575279; }
+.default-color0.chart-legend-item-symbol { -fx-background-color: #575279; }
+
+.default-color1.chart-bar { -fx-bar-fill: #d7827a; }
+.default-color1.chart-legend-item-symbol { -fx-background-color:  #d7827a; }
+
+.default-color2.chart-bar { -fx-bar-fill: #a8cdd8; }
+.default-color2.chart-legend-item-symbol { -fx-background-color:  #a8cdd8; }
+
+.default-color3.chart-bar { -fx-bar-fill: #dec28d; }
+.default-color3.chart-legend-item-symbol { -fx-background-color: #dec28d; }
+
+/********************** STYLING FOR SPECIFIC CHARTS **********************/
+
+/* HOME PAGE GRAPH */
+#HomePageDataPointsInLastMonthGraph .chart-title {
+    -fx-font-size: 20px; 
+}
+
+#HomePageDataPointsInLastMonthGraph .default-color0.chart-series-line {
+    -fx-stroke: #9893a5;
+    -fx-stroke-width: 3px;
+}
+#HomePageDataPointsInLastMonthGraph .default-color0.chart-line-symbol {
+    -fx-background-color: #575279, #9893a5; 
+    -fx-background-insets: 0, 2px;
+}
+#HomePageDataPointsInLastMonthGraph .default-color0.chart-legend-item-symbol {
+    -fx-background-color: #575279;
+}
+
+#HomePageDataPointsInLastMonthGraph .default-color1.chart-series-line {
+    -fx-stroke: #ebbcba;
+    -fx-stroke-width: 3px;
+}
+#HomePageDataPointsInLastMonthGraph .default-color1.chart-line-symbol {
+    -fx-background-color: #d7827a, #ebbcba; 
+    -fx-background-insets: 0, 2px;
+}
+#HomePageDataPointsInLastMonthGraph .default-color1.chart-legend-item-symbol {
+    -fx-background-color: #d7827a;
+}
+
+#HomePageDataPointsInLastMonthGraph .default-color2.chart-series-line {
+    -fx-stroke: #a8cdd8;
+    -fx-stroke-width: 3px;
+}
+#HomePageDataPointsInLastMonthGraph .default-color2.chart-line-symbol {
+    -fx-background-color: #31748f, #a8cdd8; 
+    -fx-background-insets: 0, 2px;
+}
+#HomePageDataPointsInLastMonthGraph .default-color2.chart-legend-item-symbol {
+    -fx-background-color: #31748f;
+}
+
+#HomePageDataPointsInLastMonthGraph .default-color3.chart-series-line {
+    -fx-stroke: #dec28d;
+    -fx-stroke-width: 3px;
+}
+#HomePageDataPointsInLastMonthGraph .default-color3.chart-line-symbol {
+    -fx-background-color: #ea9d34, #dec28d; 
+    -fx-background-insets: 0, 2px;
+}
+#HomePageDataPointsInLastMonthGraph .default-color3.chart-legend-item-symbol {
+    -fx-background-color: #ea9d34;
+
+}
+
+/* VIEW DATA PAGE BLOOD PRESSURE GRAPH */
+
+#ViewDataBloodPressureGraph .default-color0.chart-bar {
+    -fx-bar-fill: #d7827a; 
+}
+#ViewDataBloodPressureGraph .default-color0.chart-legend-item-symbol {
+    -fx-background-color:  #d7827a;
+}
+#ViewDataBloodPressureGraph .default-color1.chart-bar {
+    -fx-bar-fill: #a8cdd8; 
+}
+#ViewDataBloodPressureGraph .default-color1.chart-legend-item-symbol {
+    -fx-background-color:  #a8cdd8;
+}
+
+/* VIEW DATA PAGE HEART RATE GRAPH */
+#ViewDataHeartRateGraph .default-color0.chart-series-line {
+    -fx-stroke: #9893a5;
+    -fx-stroke-width: 3px;
+}
+#ViewDataHeartRateGraph .default-color0.chart-line-symbol {
+    -fx-background-color: #575279, #9893a5; 
+    -fx-background-insets: 0, 2px;
+}
+#ViewDataHeartRateGraph .default-color0.chart-legend-item-symbol {
+    -fx-background-color: #575279;
+}
+
+/* VIEW DATA PAGE SLEEP DURATION GRAPH */
+#ViewDataSleepDurationGraph .default-color0.chart-series-line {
+    -fx-stroke: #a8cdd8;
+    -fx-stroke-width: 3px;
+}
+#ViewDataSleepDurationGraph .default-color0.chart-line-symbol {
+    -fx-background-color: #31748f, #a8cdd8; 
+    -fx-background-insets: 0, 2px; 
+}
+#ViewDataSleepDurationGraph .default-color0.chart-legend-item-symbol {
+    -fx-background-color: #31748f;
+}
+
+/* VIEW DATA PAGE RESP RATE GRAPH */
+#ViewDataRespRateGraph .default-color0.chart-series-line {
+    -fx-stroke: #ebbcba;
+    -fx-stroke-width: 3px;
+}
+#ViewDataRespRateGraph .default-color0.chart-line-symbol {
+    -fx-background-color: #d7827a, #ebbcba; 
+    -fx-background-insets: 0, 2px;
+}
+#ViewDataRespRateGraph .default-color0.chart-legend-item-symbol {
+    -fx-background-color: #d7827a;
+}
+
+/* ********************* TABLE STYLING ********************* */
+
+.table-view {
+    -fx-background-color: transparent;
+    -fx-border-color: #a8cdd8; 
+    -fx-border-width: 1px;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+}
+
+/* Header row background */
+.table-view .column-header-background {
+    -fx-background-color: #575279; 
+}
+
+/* Individual column headers */
+.table-view .column-header, .table-view .filler {
+    -fx-background-color: transparent;
+    -fx-size: 35px;
+}
+
+/* Header text style */
+.table-view .column-header .label {
+    -fx-text-fill: #ffffff;
+    -fx-font-family: "Aptos Mono";
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+}
+
+/* Table cells text and padding */
+.table-view .table-cell {
+    -fx-text-fill: #575279;
+    -fx-font-family: "Aptos Mono";
+    -fx-font-size: 13px;
+    -fx-padding: 8px;
+    -fx-border-color: transparent; 
+}
+
+/* Row variations */
+.table-row-cell:odd {
+    -fx-background-color: #ffffff;
+}
+
+.table-row-cell:even {
+    -fx-background-color: #faf4ed; 
+}
+
+/* Highlight row when clicked */
+.table-row-cell:selected {
+    -fx-background-color: #ebbcba; 
+}
+.table-row-cell:selected .table-cell {
+    -fx-text-fill: #575279;
+}
+
+/* ********************* BUTTON STYLING ********************* */
+
+/* PRIMARY BUTTONS */
+.button-primary {
+    -fx-background-color: #d7827a;
+    -fx-text-fill: #ffffff;
+    -fx-font-family: "Aptos Mono";
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-background-radius: 4px;
+    -fx-cursor: hand;
+}
+
+.button-primary:hover {
+    -fx-background-color: #ebbcba; 
+    -fx-text-fill: #575279;
+}
+
+/* SECONDARY BUTTONS */
+.button-secondary {
+    -fx-background-color: #d7827a;
+    -fx-text-fill: #ffffff;
+    -fx-font-family: "Aptos Mono";
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-background-radius: 4px;
+    -fx-cursor: hand;
+}
+
+.button-secondary:hover {
+    -fx-background-color: #ebbcba;
+    -fx-text-fill: #575279;
+}
+
+.button-secondary:disabled {
+    -fx-opacity: 0.4;             
+    -fx-cursor: default;
+    -fx-background-color: #cecacd; 
+    -fx-text-fill: #ffffff;
+}
+
+.button-secondary:disabled:hover {
+    -fx-background-color: #cecacd;
+    -fx-text-fill: #ffffff;
+}
+
+/* EXIT BUTTON */
+.exit-button {
+    -fx-background-color: #ebbcba;     
+    -fx-text-fill: #575279;            
+    -fx-font-family: "Aptos Mono";     
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-background-radius: 4px;
+    -fx-cursor: hand;                  
+    -fx-padding: 0px;
+    
+    -fx-pref-width: 28px;
+    -fx-pref-height: 28px;
+    -fx-min-width: 28px;
+    -fx-min-height: 28px;
+    -fx-max-width: 28px;
+    -fx-max-height: 28px;
+}
+
+.exit-button:hover {
+    -fx-background-color: #d7827a;     
+    -fx-text-fill: #ffffff;            
+}
+
+/* SIDEBAR BUTTONS */
+.sidebar-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #faf4ed;        
+    -fx-font-family: "Aptos Mono";
+    -fx-font-size: 16px;
+    -fx-alignment: center-left;         
+    -fx-cursor: hand;                 
+    -fx-padding: 10px 15px;
+    -fx-background-radius: 4px;
+}
+
+.sidebar-button:hover {
+    -fx-background-color: #6e6a86;    
+    /*-fx-text-fill: #a8cdd8;  */
+}
+
+/* QUICKLINK BUTTONS ON HOMEPAGE */
+.quicklink-button {
+    -fx-background-color: transparent;
+    -fx-border-color: #d7827a;      
+    -fx-border-width: 1px;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-text-fill: #d7827a;    
+    -fx-font-family: "Aptos Mono";
+    -fx-font-size: 16px;
+    -fx-cursor: hand;              
+    /* -fx-padding: 10px 20px; */
+}
+
+.quicklink-button:hover {
+    -fx-background-color: rgba(215, 130, 122, 0.15); 
+    -fx-border-color: #d7827a;
+    -fx-text-fill: #d7827a;
+}
+
+/* ********************* TEXT BOX STYLING ********************* */
+
+.text-field {
+    -fx-background-color: #ffffff;     
+    -fx-border-color: #a8cdd8;         
+    -fx-border-width: 1px;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    
+    -fx-text-fill: #575279;            
+    -fx-font-family: "Aptos Mono";
+    -fx-font-size: 12px;
+    -fx-padding: 6px 10px;              
+}
+
+.text-field:focused {
+    -fx-border-color: #31748f;          
+    -fx-border-width: 1.5px;           
+}
+
+.text-field:readonly {
+    -fx-background-color: #ffffff;      
+    -fx-border-color: #a8cdd8;        
+    -fx-text-fill: #575279;           
+}
+
+.text-field:readonly:focused {
+    -fx-border-color: #a8cdd8;
+    -fx-border-width: 1px;
+}
+
+/* ********************* DROPDOWN STYLING ********************* */
+.frequency-combo-box {
+    -fx-background-color: #ffffff;     
+    -fx-border-color: #a8cdd8;         
+    -fx-border-width: 1px;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    
+    -fx-text-fill: #575279;            
+    -fx-font-family: "Aptos Mono";
+    -fx-font-size: 12px;
+    -fx-padding: 6px 10px; 
+}
+
+.frequency-combo-box:focused{
+    -fx-border-color: #31748f;          
+    -fx-border-width: 1.5px;  
+}
+
+/* ********************* CHECKBOX STYLING ********************* */
+
+.check-box {
+    -fx-font-family: "Aptos Mono";
+    -fx-font-size: 14px;
+    -fx-text-fill: #575279;
+    -fx-cursor: hand;
+}
+
+.check-box .box {
+    -fx-background-color: #ffffff; 
+    -fx-border-color: #a8cdd8;
+    -fx-border-width: 1px;         
+    -fx-border-radius: 3px; 
+    -fx-background-radius: 3px;
+    
+    -fx-pref-width: 16px;
+    -fx-pref-height: 16px;
+    -fx-min-width: 16px;
+    -fx-min-height: 16px;
+    -fx-max-width: 16px;
+    -fx-max-height: 16px;
+}
+
+.check-box:hover .box {
+    -fx-border-color: #31748f;
+}
+
+.check-box:focused .box {
+    -fx-border-color: #31748f;    
+    -fx-border-width: 1px;        
+}
+
+.check-box:selected .box {
+    -fx-background-color: #31748f;
+    -fx-border-color: #31748f;
+}
+
+.check-box .mark {
+    -fx-background-color: transparent; 
+    -fx-max-width: 10px;
+    -fx-max-height: 10px;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: #ffffff; 
+}
+
+.check-box .label {
+    -fx-padding: 0px 0px 0px 8px;   
+    -fx-text-fill: #575279;
+}
+
+/* DATE PICKER STYLING */
+.date-picker {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #a8cdd8;
+    -fx-border-width: 1px;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-font-family: "Aptos Mono";
+    -fx-font-size: 12px;
+}
