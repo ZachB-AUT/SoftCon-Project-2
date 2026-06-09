@@ -1,5 +1,7 @@
 package com.group1.myvitals.model;
 
+import com.group1.myvitals.model.dao.VitalsDAO;
+
 /**
  * Singleton that holds the currently logged-in user's id and username,
  * and provides the single shared DB connection for the application.
@@ -12,7 +14,7 @@ public class Session {
 
     private int currentUserId = -1;
     private String currentUsername = null;
-    private final DB_DataInterface db;
+    private final VitalsDAO db;
 
     private Session() {
         this.db = new DB_DataInterface();
@@ -47,7 +49,7 @@ public class Session {
         return currentUserId != -1;
     }
 
-    public DB_DataInterface getDb() {
+    public VitalsDAO getDb() {
         return db;
     }
 }

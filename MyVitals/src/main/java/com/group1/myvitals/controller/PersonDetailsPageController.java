@@ -1,6 +1,6 @@
 package com.group1.myvitals.controller;
 
-import com.group1.myvitals.model.DB_DataInterface;
+import com.group1.myvitals.model.dao.VitalsDAO;
 import com.group1.myvitals.model.Session;
 import java.io.IOException;
 import java.util.HashMap;
@@ -46,7 +46,7 @@ public class PersonDetailsPageController {
     @FXML private TableView<String[]> PersonalDetailsMedicationsTable;
     @FXML private TableView<String> PersonalDetailsAllergiesTable;
 
-    private DB_DataInterface db;
+    private VitalsDAO db;
     private int userId;
 
     @FXML

@@ -1,9 +1,6 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<project
-    xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
->
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.group1</groupId>
@@ -43,6 +40,13 @@
             <version>10.16.1.1</version>
         </dependency>
 
+        <!-- BCrypt for password hashing -->
+        <dependency>
+            <groupId>org.mindrot</groupId>
+            <artifactId>jbcrypt</artifactId>
+            <version>0.4</version>
+        </dependency>
+
         <!-- Typst PDF report generation (correct artifact ID from Project 1) -->
         <dependency>
             <groupId>io.github.fatihcatalkaya</groupId>
@@ -67,18 +71,9 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.14.0</version>
+                <version>3.11.0</version>
                 <configuration>
                     <release>25</release>
-                    <compilerArgs>
-                        <!-- Allow named module to read classpath jars (Derby) -->
-                        <arg>--add-reads</arg>
-                        <arg>com.group1.myvitals=ALL-UNNAMED</arg>
-                    </compilerArgs>
-                    <!-- Exclude legacy files marked for removal -->
-                    <excludes>
-                        <exclude>**/OLD_REMOVE_LATER/**</exclude>
-                    </excludes>
                 </configuration>
             </plugin>
 
@@ -88,11 +83,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
                 <configuration>
-                    <mainClass>com.group1.myvitals.view.App</mainClass>
-                    <options>
-                        <option>--add-reads</option>
-                        <option>com.group1.myvitals=ALL-UNNAMED</option>
-                    </options>
+                    <mainClass>com.group1.myvitals.app.App</mainClass>
                 </configuration>
                 <executions>
                     <execution>
@@ -102,8 +93,7 @@
                         <id>debug</id>
                         <configuration>
                             <options>
-                                <option
-                                >-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=localhost:8000</option>
+                                <option>-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=localhost:8000</option>
                             </options>
                         </configuration>
                     </execution>
@@ -111,8 +101,7 @@
                         <id>ide-debug</id>
                         <configuration>
                             <options>
-                                <option
-                                >-agentlib:jdwp=transport=dt_socket,server=n,address=${jpda.address}</option>
+                                <option>-agentlib:jdwp=transport=dt_socket,server=n,address=${jpda.address}</option>
                             </options>
                         </configuration>
                     </execution>
@@ -129,18 +118,6 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
-
-            <!-- Surefire: allow test code (unnamed module) to access model package -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.2.5</version>
-                <configuration>
-                    <argLine>
-                        --add-opens com.group1.myvitals/com.group1.myvitals.model=ALL-UNNAMED
-                    </argLine>
-                </configuration>
             </plugin>
 
         </plugins>

@@ -18,4 +18,5 @@ module com.group1.myvitals {
     // Exports so test code (unnamed module) can access these packages
     exports com.group1.myvitals.view;
     exports com.group1.myvitals.model;
+    exports com.group1.myvitals.model.dao;
 }

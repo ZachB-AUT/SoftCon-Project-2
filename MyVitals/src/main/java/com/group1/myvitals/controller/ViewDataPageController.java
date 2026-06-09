@@ -1,6 +1,6 @@
 package com.group1.myvitals.controller;
 
-import com.group1.myvitals.model.DB_DataInterface;
+import com.group1.myvitals.model.dao.VitalsDAO;
 import com.group1.myvitals.model.Session;
 import java.util.ArrayList;
 import javafx.fxml.FXML;
@@ -21,7 +21,7 @@ public class ViewDataPageController {
 
     @FXML
     public void initialize() {
-        DB_DataInterface db = Session.getInstance().getDb();
+        VitalsDAO db = Session.getInstance().getDb();
         int userId = Session.getInstance().getCurrentUserId();
 
         ArrayList<String[]> dataTypes = db.getDataTypes();
