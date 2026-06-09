@@ -11,6 +11,7 @@ import java.util.ArrayList;
  * @author zachb
  */
 public class DB_learn {
+
     private DB_learn() {}
 
     public DB_learn DB_learn_test() {
@@ -22,7 +23,6 @@ public class DB_learn {
         DB_DataInterface db = new DB_DataInterface();
         dbl.populate(db);
         dbl.print_user_datapoints(db, 1);
-
     }
 
     private void populate(DB_DataInterface db) {

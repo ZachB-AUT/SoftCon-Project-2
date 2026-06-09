@@ -1,5 +1,7 @@
 package com.group1.myvitals.model;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -10,8 +12,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.NoSuchElementException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 /*
  * The database stores users, dataTypes, and dataPoints.
@@ -708,7 +708,9 @@ public class DB_DataInterface {
     private static String hashPassword(String password) {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
-            byte[] bytes = md.digest(password.getBytes(java.nio.charset.StandardCharsets.UTF_8));
+            byte[] bytes = md.digest(
+                password.getBytes(java.nio.charset.StandardCharsets.UTF_8)
+            );
             StringBuilder sb = new StringBuilder();
             for (byte b : bytes) sb.append(String.format("%02x", b));
             return sb.toString();
